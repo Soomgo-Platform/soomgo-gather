@@ -4,3 +4,4 @@
 # delete report all
 # delete report
 
+# Class 로 레포트 구분
