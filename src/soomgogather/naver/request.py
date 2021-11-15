@@ -4,7 +4,7 @@ import hashlib
 import hmac
 import requests
 
-class requestsearchad:
+class RequestSearchAd:
 
     def __init__(self, base_url, api_key, secret_key, customer_id):
         self.base_url = base_url
