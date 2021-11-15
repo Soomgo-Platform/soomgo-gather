@@ -1,5 +1,7 @@
-from soomgogather.naver.searchad import sample
+from soomgogather.naver.searchad import MasterReport
 
 def test_search_ad_success():
-    sample()
+    # test MasterReport
+    # need setting parameter for test
+    MasterReport( api_key, secret_key, customer_id, report_type )
 
