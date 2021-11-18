@@ -2,15 +2,9 @@ import time
 import base64
 import hashlib
 import hmac
-import requests
+
 
 class RequestSearchAd:
-
-    def __init__(self, base_url, api_key, secret_key, customer_id):
-        self.base_url = base_url
-        self.api_key = api_key
-        self.secret_key = secret_key
-        self.customer_id = customer_id
 
     # generate signature
     def generate(self, timestamp, method, uri):
@@ -33,20 +27,3 @@ class RequestSearchAd:
             'X-Signature': signature,
             }
     
-    # request by GET method
-    def request_get(self, uri):
-        method = 'GET'
-        # parameter 존재 유무로 구분
-        r = requests.get(self.base_url + uri, headers=self.get_header(method, uri))
-
-        return r
-
-    # request by POST method
-    def request_post(self):
-
-        return ""
-
-    # request by DELETE method
-    def request_delete(self):
-
-        return ""
