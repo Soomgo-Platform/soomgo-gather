@@ -2,7 +2,8 @@ import time
 import base64
 import hashlib
 import hmac
-
+import requests
+import logging
 
 class RequestSearchAd:
 
@@ -26,4 +27,20 @@ class RequestSearchAd:
             'X-Customer': str(self.customer_id),
             'X-Signature': signature,
             }
-    
+
+    def request_get(self, base_url, uri, json_param={}):
+        try:
+            r = requests.get(
+                base_url + uri,
+                params=json_param,
+                headers=self.get_header('GET', uri),
+            )
+            
+            r.raise_for_status()
+
+        except requests.exceptions.HTTPError as e:
+            logging.exception(f"HTTP requests is failed {e}")
+            raise RuntimeError("HTTP requests is failed.") 
+             
+        return r
+

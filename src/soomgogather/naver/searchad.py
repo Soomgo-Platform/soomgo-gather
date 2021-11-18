@@ -1,5 +1,4 @@
 import logging
-import requests
 from soomgogather.naver.request_searchad import RequestSearchAd
 
 class Bizmoney(RequestSearchAd):
@@ -13,21 +12,24 @@ class Bizmoney(RequestSearchAd):
 
     def get_report_period(self,start_dt, end_dt):
         uri = '/billing/bizmoney/histories/period'
-        logging.info(f"Start requsting a bizmoney history during period {start_dt} and {end_dt}")
+        logging.info(f"Start requsting Daily BizMoney Status during period {start_dt} and {end_dt}")
+        params={
+            'searchStartDt': start_dt,
+            'searchEndDt': end_dt,
+        }
+        r = self.request_get(self.base_url, uri, json_param=params)
 
-        try:
-            r = requests.get(
-                self.base_url + uri,
-                params={
-                    'searchStartDt': start_dt,
-                    'searchEndDt': end_dt,
-                },
-                headers=self.get_header('GET', uri),
-            )
-            r.raise_for_status()
-
-        except requests.exceptions.HTTPError as e:
-            logging.exception(f"HTTP requests is failed {e}")
-            raise RuntimeError("HTTP requests is failed.")  
         return r
 
+            
+    def get_report_cost(self, stat_dt, start_dt, end_dt):
+        uri = '/billing/bizmoney/histories/cost'
+        logging.info(f"Start requsting the used amount of bizmoney that day")
+        params={
+            'statDt': stat_dt,
+            'searchStartDt': start_dt,
+            'searchEndDt': end_dt,
+        }
+        r = self.request_get(self.base_url, uri, json_param=params)
+
+        return r

@@ -12,3 +12,6 @@ def test_get_bizmoney():
         r = bizmoney_report.get_report_period(TODAY_YMD,TODAY_YMD)
         
         assert r.status_code == 200
+
+        r2 = bizmoney_report.get_report_cost(TODAY_YMD, TODAY_YMD,TODAY_YMD)
+        assert r2.status_code == 200
