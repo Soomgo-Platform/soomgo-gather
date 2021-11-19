@@ -1,17 +1,40 @@
-from soomgogather.naver.searchad import Bizmoney
-from datetime import datetime, timedelta
-
+from soomgogather.naver import Bizmoney
 import requests_mock
 
-def test_get_bizmoney():
-    with requests_mock.Mocker() as mocker:
-        mocker.get(requests_mock.ANY)
-        TODAY_YMD = (datetime.now() + timedelta(hours=9)).strftime("%Y%m%d")
-        
-        bizmoney_report = Bizmoney('23xrtwr', 'aewErs35+CU2VXAZjgpI0rmnttAJCrA==', '93453', 'https://api.naver.com')
-        r = bizmoney_report.get_report_period(TODAY_YMD,TODAY_YMD)
-        
-        assert r.status_code == 200
+bizmoney = Bizmoney(api_key='_', secret_key='_', customer_id='_')
 
-        r2 = bizmoney_report.get_report_cost(TODAY_YMD, TODAY_YMD,TODAY_YMD)
-        assert r2.status_code == 200
+params = {
+    'start_dt': '20211118',
+    'search_start_dt': '20211118',
+    'search_end_dt': '20211118',
+}
+
+
+def test_bizmoney_status():
+    with requests_mock.Mocker() as _mock:
+        _mock.get(f'{bizmoney.domain}/billing/bizmoney', status_code=200, json='_')
+        assert bizmoney.status().status_code == 200
+
+
+def test_bizmoney_cost():
+    with requests_mock.Mocker() as _mock:
+        _mock.get(f'{bizmoney.domain}/billing/bizmoney/cost', status_code=200, json='_')
+        assert bizmoney.cost(params=params).status_code == 200
+
+
+def test_bizmoney_charge():
+    with requests_mock.Mocker() as _mock:
+        _mock.get(f'{bizmoney.domain}/billing/bizmoney/histories/charge', status_code=200, json='_')
+        assert bizmoney.charge(params=params).status_code == 200
+
+
+def test_bizmoney_exhaust():
+    with requests_mock.Mocker() as _mock:
+        _mock.get(f'{bizmoney.domain}/billing/bizmoney/histories/exhaust', status_code=200, json='_')
+        assert bizmoney.exhaust(params=params).status_code == 200
+
+
+def test_bizmoney_period():
+    with requests_mock.Mocker() as _mock:
+        _mock.get(f'{bizmoney.domain}/billing/bizmoney/histories/period', status_code=200, json='_')
+        assert bizmoney.period(params=params).status_code == 200
