@@ -6,6 +6,7 @@ import time
 import requests
 from marshmallow import Schema, fields
 
+
 class BaseSearchAD:
     domain = 'https://api.naver.com'
 

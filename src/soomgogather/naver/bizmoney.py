@@ -1,15 +1,15 @@
-from marshmallow import Schema, fields, ValidationError
+from marshmallow import Schema, ValidationError, fields
+
 from ._searchad import BaseSearchAD
 
 
 class Bizmoney(BaseSearchAD):
-
     class _BizmoneySchema(Schema):
         search_start_dt = fields.Str(data_key='searchStartDt', required=True)
         search_end_dt = fields.Str(data_key='searchEndDt', required=True)
         stat_dt = fields.Str(data_key='statDt')
-    
-    def set_params(self,params):
+
+    def set_params(self, params):
         try:
             request_params = self._BizmoneySchema().dump(params)
             self._BizmoneySchema().load(request_params)
