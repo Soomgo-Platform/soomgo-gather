@@ -5,17 +5,16 @@ from ._searchad import BaseSearchAD
 
 class Bizmoney(BaseSearchAD):
     class _BizmoneySchema(Schema):
-        search_start_dt = fields.Str(data_key='searchStartDt', required=True)
-        search_end_dt = fields.Str(data_key='searchEndDt', required=True)
-        stat_dt = fields.Str(data_key='statDt')
+        search_start_dt = fields.Str(attribute='searchStartDt', required=True)
+        search_end_dt = fields.Str(attribute='searchEndDt', required=True)
+        stat_dt = fields.Str(attribute='statDt')
 
     def set_params(self, params):
         try:
-            request_params = self._BizmoneySchema().dump(params)
-            self._BizmoneySchema().load(request_params)
-            return request_params
+            return self._BizmoneySchema().load(params)
         except ValidationError as err:
             raise ValueError(f"incorrect parameters: {err}")
+
 
     def status(self):
         return self.call('GET', '/billing/bizmoney')
