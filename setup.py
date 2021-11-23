@@ -1,7 +1,9 @@
 # Copyright 2021 Brave Mobile Co., Ltd.
 import setuptools
 
-install_requires = []
+install_requires = [
+    "marshmallow",
+]
 
 tests_requires = [
     "black>=20.8b1",
@@ -11,6 +13,7 @@ tests_requires = [
     "tox",
     "Sphinx>=3.2.1",
     "isort",
+    "requests_mock",
 ] + install_requires
 
 
