@@ -9,7 +9,7 @@ class Bizmoney(BaseSearchAD):
         search_end_dt = fields.Str(attribute='searchEndDt', required=True)
         stat_dt = fields.Str(attribute='statDt')
 
-    def set_params(self, params):
+    def get_params(self, params):
         try:
             return self._BizmoneySchema().load(params)
         except ValidationError as err:
@@ -20,13 +20,13 @@ class Bizmoney(BaseSearchAD):
         return self.call('GET', '/billing/bizmoney')
 
     def cost(self, params={}):
-        return self.call('GET', '/billing/bizmoney/cost', params=self.set_params(params))
+        return self.call('GET', '/billing/bizmoney/cost', params=self.get_params(params))
 
     def charge(self, params={}):
-        return self.call('GET', '/billing/bizmoney/histories/charge', params=self.set_params(params))
+        return self.call('GET', '/billing/bizmoney/histories/charge', params=self.get_params(params))
 
     def exhaust(self, params={}):
-        return self.call('GET', '/billing/bizmoney/histories/exhaust', params=self.set_params(params))
+        return self.call('GET', '/billing/bizmoney/histories/exhaust', params=self.get_params(params))
 
     def period(self, params={}):
-        return self.call('GET', '/billing/bizmoney/histories/period', params=self.set_params(params))
+        return self.call('GET', '/billing/bizmoney/histories/period', params=self.get_params(params))
