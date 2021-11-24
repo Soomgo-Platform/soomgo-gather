@@ -12,8 +12,6 @@ Simple Versioning 은 기본적으로 x.y 처럼 두 파트로 구성되고, 각
 - Major(x): 새로운 수집 대상이 추가되는 경우. (ex. Naver SearchAd, Google search console, Google Ads, Facebook Business 등 )
 - Minor(y): 기존 수집 대상의 하위 기능이 변경(추가,수정,삭제)되는 경우.
 
-* Major 가 버전업이 되면 Minor 가 0으로 초기화한다.
-
 ------------------------------------------------
 
 Changes에는 총 5가지의 유형이 있습니다.
@@ -35,5 +33,5 @@ released: 2021-11-23
 
 **Contributors**
 
-- paul880110
-- rosa-soomgo
+- Paul Cho
+- Rosa Kim
