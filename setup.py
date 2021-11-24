@@ -12,6 +12,7 @@ tests_requires = [
     "pytest-cov",
     "tox",
     "Sphinx>=3.2.1",
+    "docutils==0.15.2",
     "isort",
     "requests_mock",
 ] + install_requires
