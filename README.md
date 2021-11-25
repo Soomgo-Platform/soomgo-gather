@@ -10,13 +10,17 @@ Soomgo-gather는 soomgo에서 데이터 수집을 위해 만든 외부 API 호�
 
 ## 패키지 구조
 
+- 기본구조
+soomgogather 밑에 데이터 제공 대상 별(Naver, Google 등) 디렉토리 존재하고
+데이터제공대상별 디렉토리 밑에 수집 데이터 별(Bizmoney, RelKwdStat 등) 파일 존재한다.  
+
 * [soomgogather](./soomgo-gather/src/soomgogather)
   * [데이터제공대상(Naver, Google, Appsflyer)](./soomgo-gather/src/soomgogather/naver)
     * [수집데이터(Bizmoney)](./soomgo-gather/src/soomgogather/naver/bizmoney.py)
 
-┗ soomgogather
-    ┗ 데이터제공대상(Naver, Google, Appsflyer)
-      ┗ 수집데이터(Bizmoney)
+## 지원되는 데이터
+* Naver SearchAd
+    * Bizmoney
 
 ## 설치 방법
 
@@ -26,6 +30,11 @@ pip install -e .[test]
 ```
 
 ## 사용 방법
+
+1. 데이터 수집이 필요한 패키지를 import 한다.
+2. 수집대상마다 요구하는 key를 셋팅하여 수집대상의 객체를 생성한다.
+3. 필요한 함수를 호출하여 수집하려는 데이터를 받아온다.
+4. 리턴된 HTTP response의 status_code를 확인하여 정상적으로 받아온 경우 response data를 사용한다.
 
 Usage:
 ```python
