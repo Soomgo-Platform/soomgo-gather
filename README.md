@@ -1,14 +1,19 @@
 # Soomgo-gather
+/apm/l/:packageName
 
 Soomgo-gather는 soomgo에서 데이터 수집을 위해 만든 외부 API 호출 통합 패키지이다.
 데이터 수집대상은 Naver SearchAd, Google Ads, Appsflyer 등이 포함될 예정이다.
 
 ---
 ## 구조
-|- soomgogather 
-|-----|- 데이터제공대상(Naver, Google, Appsflyer)
-|-----|-----|- 수집데이터 (Bizmoney)
+├── soomgogather 
+|   ├──   데이터제공대상(Naver, Google, Appsflyer)
+└── └──     └──  수집데이터 (Bizmoney)
 
+## 설치 방법
+```
+pip install -e .[test]
+```
 
 ## 사용 방법
 Usage:
