@@ -49,8 +49,6 @@ class Bizmoney(BaseSearchAD):
         **params:**
          - search_start_dt: 조회 시작일 (required)
          - search_end_dt: 조회 종료일 (required)
-
-        **Return type:** HTTP response object
         """
         return self.call('GET', '/billing/bizmoney/cost', params=self._get_params(params))
 
