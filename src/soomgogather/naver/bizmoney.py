@@ -4,7 +4,8 @@ from ._searchad import BaseSearchAD
 
 
 class Bizmoney(BaseSearchAD):
-    """Naver SearchAd API Bizmoney 
+    """
+    Naver SearchAd API Bizmoney 
 
     Naver SearchAd에서 API키를 발급받은 api_key, secret_key, customer_id를 사용하여 Bizmoney 클래스 객체를 생성한다.
     생성한 Bizmoney 객체로 Bizmoney의 잔액, 사용금액, 충전내역, 잠금상태에 대한 정보를 얻을 수 있다.
@@ -26,8 +27,6 @@ class Bizmoney(BaseSearchAD):
 
         >>> if r.status_code == 200:
         ...     print(r.json())
-        
-
     """
     class _BizmoneySchema(Schema):
         search_start_dt = fields.Str(attribute='searchStartDt', required=True)
@@ -35,9 +34,6 @@ class Bizmoney(BaseSearchAD):
         stat_dt = fields.Str(attribute='statDt')
 
     def _get_params(self, params):
-        """입력받은 파라미터를 요청하기위한 형태로 변환한다. (private function) 
-        Bizmoney의 호출을 위해 별도로 호출할 필요는 없다.
-        """
         try:
             return self._BizmoneySchema().load(params)
         except ValidationError as err:
@@ -45,55 +41,47 @@ class Bizmoney(BaseSearchAD):
 
 
     def status(self):
-        """Bizmoney 잔액과 환불/예산의 잠금상태를 반환한다.
-
-        """
+        """Bizmoney 잔액과 환불/예산의 잠금상태를 반환한다."""
         return self.call('GET', '/billing/bizmoney')
 
     def cost(self, params={}):
-        """파라미터로 전달한 기간의 Bizmoney 사용된 금액을 반환한다.
+        """
+        파라미터로 전달한 기간의 Bizmoney 사용된 금액을 반환한다.
 
         **params:**
          - search_start_dt: 조회 시작일 (required)
          - search_end_dt: 조회 종료일 (required)
 
         **Return type:** HTTP response object
-
         """
         return self.call('GET', '/billing/bizmoney/cost', params=self._get_params(params))
 
     def charge(self, params={}):
-        """파라미터로 전달한 기간의 Bizmoney 충전 내역을 반환한다.
+        """
+        파라미터로 전달한 기간의 Bizmoney 충전 내역을 반환한다.
 
         **params:**
          - search_start_dt: 조회 시작일 (required)
          - search_end_dt: 조회 종료일 (required)
-
-        **Return type:** HTTP response object
-        
         """
         return self.call('GET', '/billing/bizmoney/histories/charge', params=self._get_params(params))
 
     def exhaust(self, params={}):
-        """파라미터로 전달한 기간의 Bizmoney 공제된 내역을 반환한다.
+        """
+        파라미터로 전달한 기간의 Bizmoney 공제된 내역을 반환한다.
 
         **params:**
          - search_start_dt: 조회 시작일 (required)
          - search_end_dt: 조회 종료일 (required)
-
-        **Return type:** HTTP response object
-        
         """
         return self.call('GET', '/billing/bizmoney/histories/exhaust', params=self._get_params(params))
 
     def period(self, params={}):
-        """파라미터로 전달한 기간의 일자별 BizMoney 상태값을 반환한다.
+        """
+        파라미터로 전달한 기간의 일자별 BizMoney 상태값을 반환한다.
 
         **params:**
          - search_start_dt: 조회 시작일 (required)
          - search_end_dt: 조회 종료일 (required)
-
-        **Return type:** HTTP response object
-        
         """
         return self.call('GET', '/billing/bizmoney/histories/period', params=self._get_params(params))
