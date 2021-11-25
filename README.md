@@ -4,6 +4,7 @@
 ![PyPI - Python Version](https://img.shields.io/badge/python->=3.6-blue)
 
 Soomgo-gather는 soomgo에서 데이터 수집을 위해 만든 외부 API 호출 통합 패키지이다.
+
 데이터 수집대상은 Naver SearchAd, Google Ads, Appsflyer 등이 포함될 예정이다.
 
 ---
@@ -11,6 +12,7 @@ Soomgo-gather는 soomgo에서 데이터 수집을 위해 만든 외부 API 호�
 ## 패키지 구조
 
 soomgogather 밑에 데이터 제공 대상 별(Naver, Google 등) 디렉토리 존재하고
+
 데이터제공대상별 디렉토리 밑에 수집 데이터 별(Bizmoney, RelKwdStat 등) 파일 존재한다.  
 
 *Sample*
