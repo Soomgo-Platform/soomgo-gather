@@ -1,3 +1,7 @@
-TODO::작성해야함
+# Soomgo-gather
+======================================
+|GA| |pypi| |versions|
 
-pip install -e .[test]
+이것이 숨고게더이다
+---
+## How to use
