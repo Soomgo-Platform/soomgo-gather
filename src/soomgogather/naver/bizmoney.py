@@ -4,8 +4,7 @@ from ._searchad import BaseSearchAD
 
 
 class Bizmoney(BaseSearchAD):
-    """
-    Naver SearchAd API Bizmoney 
+    """Naver SearchAd API Bizmoney 
 
     Naver SearchAd에서 API키를 발급받은 api_key, secret_key, customer_id를 사용하여 Bizmoney 클래스 객체를 생성한다.
     생성한 Bizmoney 객체로 Bizmoney의 잔액, 사용금액, 충전내역, 잠금상태에 대한 정보를 얻을 수 있다.
@@ -45,8 +44,7 @@ class Bizmoney(BaseSearchAD):
         return self.call('GET', '/billing/bizmoney')
 
     def cost(self, params={}):
-        """
-        파라미터로 전달한 기간의 Bizmoney 사용된 금액을 반환한다.
+        """파라미터로 전달한 기간의 Bizmoney 사용된 금액을 반환한다.
 
         **params:**
          - search_start_dt: 조회 시작일 (required)
@@ -57,8 +55,7 @@ class Bizmoney(BaseSearchAD):
         return self.call('GET', '/billing/bizmoney/cost', params=self._get_params(params))
 
     def charge(self, params={}):
-        """
-        파라미터로 전달한 기간의 Bizmoney 충전 내역을 반환한다.
+        """파라미터로 전달한 기간의 Bizmoney 충전 내역을 반환한다.
 
         **params:**
          - search_start_dt: 조회 시작일 (required)
@@ -67,8 +64,7 @@ class Bizmoney(BaseSearchAD):
         return self.call('GET', '/billing/bizmoney/histories/charge', params=self._get_params(params))
 
     def exhaust(self, params={}):
-        """
-        파라미터로 전달한 기간의 Bizmoney 공제된 내역을 반환한다.
+        """파라미터로 전달한 기간의 Bizmoney 공제된 내역을 반환한다.
 
         **params:**
          - search_start_dt: 조회 시작일 (required)
@@ -77,8 +73,7 @@ class Bizmoney(BaseSearchAD):
         return self.call('GET', '/billing/bizmoney/histories/exhaust', params=self._get_params(params))
 
     def period(self, params={}):
-        """
-        파라미터로 전달한 기간의 일자별 BizMoney 상태값을 반환한다.
+        """파라미터로 전달한 기간의 일자별 BizMoney 상태값을 반환한다.
 
         **params:**
          - search_start_dt: 조회 시작일 (required)
