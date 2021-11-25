@@ -10,9 +10,13 @@ Soomgo-gather는 soomgo에서 데이터 수집을 위해 만든 외부 API 호�
 
 ## 패키지 구조
 
-* [soomgogather/](./soomgo-gather/src/soomgogather)
-  * [데이터제공대상(Naver, Google, Appsflyer)/](./soomgo-gather/src/soomgogather/naver)
+* [soomgogather](./soomgo-gather/src/soomgogather)
+  * [데이터제공대상(Naver, Google, Appsflyer)](./soomgo-gather/src/soomgogather/naver)
     * [수집데이터(Bizmoney)](./soomgo-gather/src/soomgogather/naver/bizmoney.py)
+
+┗ soomgogather
+    ┗ 데이터제공대상(Naver, Google, Appsflyer)
+      ┗ 수집데이터(Bizmoney)
 
 ## 설치 방법
 
