@@ -14,16 +14,15 @@ soomgogather 밑에 데이터 제공 대상 별(Naver, Google 등) 디렉토리 
 데이터제공대상별 디렉토리 밑에 수집 데이터 별(Bizmoney, RelKwdStat 등) 파일 존재한다.  
 
 *Sample*
-```
 * [soomgogather](./src/soomgogather)
   * [Naver](./src/soomgogather/naver)
     * [Bizmoney](./src/soomgogather/naver/bizmoney.py)
-```
+
 
 ## 지원되는 데이터
 * Naver SearchAd
     * Bizmoney
-
+  
 ## 설치 방법
 
 - 테스트 패키지 설치방법
