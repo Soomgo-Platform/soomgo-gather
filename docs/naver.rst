@@ -10,3 +10,5 @@ http://naver.github.io/searchad-apidoc
 
 .. autoclass:: soomgogather.naver.bizmoney.Bizmoney
     :members:
+.. autoclass:: soomgogather.naver.relkwdstat.RelKwdStat
+    :members:
