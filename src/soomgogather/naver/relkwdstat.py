@@ -15,7 +15,7 @@ class RelKwdStat(BaseSearchAD):
 
     .. code-block:: python
 
-        >>> from soomgogather.naver import Bizmoney
+        >>> from soomgogather.naver import RelKwdStat
 
         >>> rel_keyword_stat = Relkwdstat(api_key='_', secret_key='_', customer_id='_')
 
