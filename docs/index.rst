@@ -25,6 +25,11 @@ API Reference
 
     naver
 
+.. toctree::
+    :maxdepth: 2
+
+    google
+
 Indices and tables
 ==================
 
