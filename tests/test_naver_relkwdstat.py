@@ -29,3 +29,4 @@ def test_relkwdstat_list_fail():
             rel_keyword_stat.list(params=params)
         except Exception as err:
             assert type(err) == ValueError
+            

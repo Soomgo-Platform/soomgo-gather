@@ -4,7 +4,7 @@ from ._searchad import BaseSearchAD
 
 
 class RelKwdStat(BaseSearchAD):
-    """Naver SearchAd API RelKwdstat
+    """Naver SearchAd API RelKwdstat 
 
     Naver SearchAd에서 API키를 발급받은 api_key, secret_key, customer_id를 사용하여 RelKwdStat 클래스 객체를 생성한다.
     생성한 RelKwdStat 객체를 사용하여 연관 검색어의 통계정보(Query count, Click count, CTR, 경쟁력 지표)에 대한 정보를 얻을 수 있다.
@@ -26,7 +26,6 @@ class RelKwdStat(BaseSearchAD):
         >>> if r.status_code == 200:
         ...     print(r.json())
     """
-
     class _RelkwdstatSchema(Schema):
         # 아래 다섯개중에 하나는 파라미터로 들어가야함
         site_id = fields.Str(attribute='siteId')
@@ -57,7 +56,6 @@ class RelKwdStat(BaseSearchAD):
          - event: 시즌테마
             - https://gist.github.com/naver-searchad/235202ffb08f9433b6f7cb10e45875f7#file-seasonal_event_code-md
          - month: 월
-
          - show_detail: 상세정보 조회 여부
             - 0: 상세정보 조회안함(기본값)
             - 1: 상세정보 조회
