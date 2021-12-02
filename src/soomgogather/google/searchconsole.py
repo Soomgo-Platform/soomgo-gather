@@ -1,5 +1,7 @@
 from marshmallow import Schema, ValidationError, fields, validate
+
 from ._googleclient import BaseGoogleClient
+
 
 class SearchConsole(BaseGoogleClient):
     """Google SearchConsol query
@@ -33,6 +35,7 @@ class SearchConsole(BaseGoogleClient):
         >>> if r['rows']:
         ...     print(r['rows'])
     """
+
     scope = ['https://www.googleapis.com/auth/webmasters.readonly']
     service_name = 'webmasters'
     service_version = 'v3'
@@ -40,10 +43,16 @@ class SearchConsole(BaseGoogleClient):
     class _SearchConsoleSchema(Schema):
         start_dt = fields.Str(attribute='startDate', required=True)
         end_dt = fields.Str(attribute='endDate', required=True)
-        dimensions = fields.List(fields.Str(), attribute='dimensions', validate=validate.ContainsOnly(['country', 'device', 'date', 'page', 'query', 'searchAppearance']))
+        dimensions = fields.List(
+            fields.Str(),
+            attribute='dimensions',
+            validate=validate.ContainsOnly(['country', 'device', 'date', 'page', 'query', 'searchAppearance']),
+        )
         row_limit = fields.Int(attribute='rowLimit', validate=validate.Range(max=25000))
         start_row = fields.Int(attribute='startRow', validate=validate.Range(min=0))
-        type = fields.Str(attribute='type', validate=validate.OneOf(['web', 'video', 'image', 'news', 'googleNews', 'discover']))
+        type = fields.Str(
+            attribute='type', validate=validate.OneOf(['web', 'video', 'image', 'news', 'googleNews', 'discover'])
+        )
         dimension_filter_groups = fields.List(fields.Str(), attribute='dimensionFilterGroups')
         data_state = fields.Str(attribute='dataState', validate=validate.OneOf(['all', 'final']))
         aggregation_type = fields.Str(attribute='aggregationType')
@@ -81,7 +90,7 @@ class SearchConsole(BaseGoogleClient):
                 - operator: contains, equals, notEquals, includingRegex, excludingRegex
                 - expression: 필터 값
          - data_state: all(fresh data 포함) 또는 final 값으로 지정 (대소문자 구분안함)
-         - aggregation_type: 결과의 aggregation(집합) 타입, auto(default), byPage(by URI), byProperty(by property)-Not supported for type=discover or type=googleNews
+         - aggregation_type: 결과의 aggregation(집합) 타입, auto(default), byPage(by URI), byProperty(by property)
         """
         response = self.service.searchanalytics().query(siteUrl=site_url, body=self._get_params(params)).execute()
         return response

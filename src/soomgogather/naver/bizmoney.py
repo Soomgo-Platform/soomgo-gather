@@ -4,7 +4,7 @@ from ._searchad import BaseSearchAD
 
 
 class Bizmoney(BaseSearchAD):
-    """Naver SearchAd API Bizmoney 
+    """Naver SearchAd API Bizmoney
 
     Naver SearchAd에서 API키를 발급받은 api_key, secret_key, customer_id를 사용하여 Bizmoney 클래스 객체를 생성한다.
     생성한 Bizmoney 객체로 Bizmoney의 잔액, 사용금액, 충전내역, 잠금상태에 대한 정보를 얻을 수 있다.
@@ -27,6 +27,7 @@ class Bizmoney(BaseSearchAD):
         >>> if r.status_code == 200:
         ...     print(r.json())
     """
+
     class _BizmoneySchema(Schema):
         search_start_dt = fields.Str(attribute='searchStartDt', required=True)
         search_end_dt = fields.Str(attribute='searchEndDt', required=True)
@@ -37,7 +38,6 @@ class Bizmoney(BaseSearchAD):
             return self._BizmoneySchema().load(params)
         except ValidationError as err:
             raise ValueError(f"incorrect parameters: {err}")
-
 
     def status(self):
         """Bizmoney 잔액과 환불/예산의 잠금상태를 반환한다."""

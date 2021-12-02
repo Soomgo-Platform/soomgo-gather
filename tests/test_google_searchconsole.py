@@ -3,10 +3,10 @@ from soomgogather.google import SearchConsole
 params = {
     'start_dt': '2021-11-23',
     'end_dt': '2021-11-23',
-    'dimensions': ['page','date','query','device'],
-    'start_row':0, 
-    'row_limit':10,
-    'data_state':'ALL'
+    'dimensions': ['page', 'date', 'query', 'device'],
+    'start_row': 0,
+    'row_limit': 10,
+    'data_state': 'ALL',
 }
 
 site_url = "https://soomgo.com"
@@ -14,14 +14,14 @@ site_url = "https://soomgo.com"
 mock_response = {
     'rows': [
         {
-            'keys': ['https://soomgo.com/test_mock', '2021-11-01', '악기', 'DESKTOP'], 
-            'clicks': 1, 
-            'impressions': 1, 
-            'ctr': 1, 
-            'position': 2
+            'keys': ['https://soomgo.com/test_mock', '2021-11-01', '악기', 'DESKTOP'],
+            'clicks': 1,
+            'impressions': 1,
+            'ctr': 1,
+            'position': 2,
         }
-    ], 
-    'responseAggregationType': 'byPage'
+    ],
+    'responseAggregationType': 'byPage',
 }
 
 
@@ -31,16 +31,18 @@ def _create_service_from_file(mocker):
 
     service = SearchConsole('service_account_key.json')
 
-    assert service 
+    assert service
     return service
+
 
 def _create_service_from_default(mocker):
     mocker.patch('google.auth.default', return_value=[None, None])
 
     service = SearchConsole()
 
-    assert service 
+    assert service
     return service
+
 
 def test_search_console_query_file(mocker):
     mocker.patch('googleapiclient.http.HttpRequest.execute', return_value=mock_response)
@@ -52,18 +54,15 @@ def test_search_console_query_file(mocker):
 
 def test_search_console_query_default(mocker):
     mocker.patch('googleapiclient.http.HttpRequest.execute', return_value=mock_response)
-    
+
     service = _create_service_from_default(mocker)
     r = service.query(site_url, params=params)
     assert r['responseAggregationType']
 
 
-
 def test_search_console_query_fail(mocker):
     mocker.patch('googleapiclient.http.HttpRequest.execute', return_value=mock_response)
-    params = {
-        'start_dt': '2021-11-23'
-    }
+    params = {'start_dt': '2021-11-23'}
     service = _create_service_from_default(mocker)
 
     try:
