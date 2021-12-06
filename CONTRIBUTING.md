@@ -16,12 +16,12 @@ Contributing 가이드라인
 2. Pull Request(PR) 생성
 
     a. PR생성 전 체크리스트
-    * feature 타입의 브랜치를 생성하여 새로운 작업을 진행한다.
+    * feature 타입의 브랜치를 생성하여 새로운 작업을 진행한다. (브랜치명: feature/이슈번호)
     * isort(setup.cfg), black(pyproject.toml), flake8(setup.cfg)을 사용하여 코드컨벤션을 체크한다.
     * 테스트코드를 작성하고 pytest를 사용하여 테스트를 진행한다.
 
     b. PR생성 방법
-    * develop 브랜치를 타겟으로 PR을 생성한다.
+    * master 브랜치를 타겟으로 PR을 생성한다.
 
 
 Contributors
