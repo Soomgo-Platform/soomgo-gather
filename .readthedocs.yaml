@@ -1,0 +1,12 @@
+version: 2
+
+formats:
+  - htmlzip
+
+python:
+  version: 3.7
+  install:
+    - method: pip
+      path: .
+      extra_requirements:
+        - test
