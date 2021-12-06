@@ -32,12 +32,9 @@ setuptools.setup(
     author_email="platform@soomgo.com",
     project_urls={
         "Changelog": "https://github.com/Soomgo-Platform/soomgo-gather/blob/main/CHANGELOG",
-        "Source": "https://github.com/Soomgo-Platform/soomgo-gather",
         "Tracker": "https://github.com/Soomgo-Platform/soomgo-gather/issues",
-        "Documentation": "",
     },
     license="MIT",
-    # namespace_packages=[''],
     packages=setuptools.find_packages(where="src"),
     package_dir={"": "src"},
     python_requires=">=3.6",
