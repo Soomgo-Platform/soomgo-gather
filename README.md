@@ -57,6 +57,6 @@ if r.status_code == 200:
      print(r.json())
 ```
 
-**Version**: 1.0 (2021-11-25)
+**Version**: 1.0 (2021-11-23)
 
 
