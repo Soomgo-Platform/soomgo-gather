@@ -3,14 +3,32 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Soomgo-gather's documentation!
+Welcome to Soomgo-gather
 =========================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+User’s Guide
+------------
+.. toctree::
+    :maxdepth: 2
 
+
+
+API Reference
+-------------
+
+.. toctree::
+    :maxdepth: 2
+
+    naver
+
+.. toctree::
+    :maxdepth: 2
+
+    google
 
 Indices and tables
 ==================
