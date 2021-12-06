@@ -23,6 +23,16 @@ Changes에는 총 5가지의 유형이 있습니다.
 - Contributors: 작업 참여자.
 
 
+Version 1.1
+
+**Doc only changes**
+
+- pypi upload 변경
+
+**Contributors**
+
+- @paul880110
+
 Version 1.0
 -------------
 released: 2021-11-23
