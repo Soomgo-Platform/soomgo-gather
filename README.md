@@ -24,6 +24,9 @@ soomgogather 밑에 데이터 제공 대상 별(Naver, Google 등) 디렉토리 
 ## 지원되는 데이터
 * Naver SearchAd
     * Bizmoney
+* Google Searchconsole
+    * query
+  
   
 ## 설치 방법
 
@@ -54,6 +57,6 @@ if r.status_code == 200:
      print(r.json())
 ```
 
-**Version**: 0.1 (2021-11-25)
+**Version**: 1.0 (2021-11-25)
 
 
