@@ -24,6 +24,7 @@ soomgogather 밑에 데이터 제공 대상 별(Naver, Google 등) 디렉토리 
 ## 지원되는 데이터
 * Naver SearchAd
     * Bizmoney
+    * RelKwdStat
 * Google Searchconsole
     * query
   
