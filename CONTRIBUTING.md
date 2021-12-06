@@ -1,6 +1,6 @@
 # Contributing to _Soomgo-gather_
 
-Contributing 가이드라인
+Contributing 방법
 ------------
 
 1. 버그레포팅
