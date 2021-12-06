@@ -3,6 +3,8 @@ import setuptools
 
 install_requires = [
     "marshmallow",
+    "google-api-core",
+    "google-api-python-client",
 ]
 
 tests_requires = [
@@ -15,6 +17,7 @@ tests_requires = [
     "docutils==0.15.2",
     "isort",
     "requests_mock",
+    "pytest-mock",
 ] + install_requires
 
 
