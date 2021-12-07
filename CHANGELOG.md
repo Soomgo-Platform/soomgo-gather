@@ -23,6 +23,18 @@ Changes에는 총 5가지의 유형이 있습니다.
 - Contributors: 작업 참여자.
 
 
+Version 1.2
+-------------
+released: 2021-12-07
+
+**Changes**
+
+- Google service name 변경
+
+**Contributors**
+
+- Rosa Kim
+
 Version 1.1
 -------------
 released: 2021-12-06
