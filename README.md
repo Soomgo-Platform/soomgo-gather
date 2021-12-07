@@ -25,16 +25,12 @@ _Soomgo-gather_ 는 최소한의 시간으로 최대한 빨리 데이터를 수�
 
 ## Supported platform
 
----
-
 * [Naver Search AD](https://searchad.naver.com/)
     * [Bizmoney](https://naver.github.io/searchad-apidoc/#/tags/Bizmoney)  
     * [RelKwdStat](https://naver.github.io/searchad-apidoc/#/tags/RelKwdStat)
 * [Google Search Console](https://search.google.com/search-console/about)
 
 ## Installation and usage
-
----
 
 ### Installation
 
@@ -63,13 +59,9 @@ if r.status_code == 200:
 
 ## License
 
----
-
 MIT
 
 ## Contributing
-
----
 
 환영합니다! 프로젝트에 기여하고 싶다면 가이드를 읽어주세요.
 
@@ -78,8 +70,6 @@ MIT
 - [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## Changelog
-
----
 
 - [CHANGELOG.md](./CHANGELOG.md)
 
