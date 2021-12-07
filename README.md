@@ -6,6 +6,7 @@
 
 ![Packagist License](https://img.shields.io/badge/license-MIT-green)
 ![PyPI - Python Version](https://img.shields.io/badge/python->=3.6-blue)
+[![Coverage Status](https://coveralls.io/repos/github/Soomgo-Platform/soomgo-gather/badge.svg?branch=main)](https://coveralls.io/github/Soomgo-Platform/soomgo-gather?branch=main)
 
 [comment]: <> (Soomgo-gather는 soomgo에서 데이터 수집을 위해 만든 외부 API 호출 통합 패키지이다.)
 
