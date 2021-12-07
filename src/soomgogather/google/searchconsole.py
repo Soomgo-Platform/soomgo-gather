@@ -37,8 +37,8 @@ class SearchConsole(BaseGoogleClient):
     """
 
     scope = ['https://www.googleapis.com/auth/webmasters.readonly']
-    service_name = 'webmasters'
-    service_version = 'v3'
+    service_name = 'searchconsole'
+    service_version = 'v1'
 
     class _SearchConsoleSchema(Schema):
         start_dt = fields.Str(attribute='startDate', required=True)
