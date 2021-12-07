@@ -23,7 +23,7 @@ tests_requires = [
 
 def get_long_description() -> str:
     return (
-        open("README.md", encoding="utf8").read().strip() + "\n\n" + open("CHANGELOG", encoding="utf8").read().strip()
+        open("README.md", encoding="utf8").read().strip() + "\n\n" + open("CHANGELOG,md", encoding="utf8").read().strip()
     )
 
 
@@ -38,7 +38,7 @@ setuptools.setup(
     author="Brave Mobile Co., Ltd.",
     author_email="platform@soomgo.com",
     project_urls={
-        "Changelog": "https://github.com/Soomgo-Platform/soomgo-gather/blob/main/CHANGELOG",
+        "Changelog": "https://github.com/Soomgo-Platform/soomgo-gather/blob/main/CHANGELOG.md",
         "Tracker": "https://github.com/Soomgo-Platform/soomgo-gather/issues",
     },
     license="MIT",
