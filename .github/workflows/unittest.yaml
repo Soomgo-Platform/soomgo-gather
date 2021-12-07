@@ -25,3 +25,13 @@ jobs:
           parallel: true
           flag-name: py${{ matrix.python-version }}-${{ matrix.os }}
           debug: true
+  coveralls-finish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Coveralls finished
+        uses: AndreMiras/coveralls-python-action@v20201129
+        with:
+          parallel-finished: true
+          debug: true
