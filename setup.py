@@ -23,7 +23,7 @@ tests_requires = [
 
 def get_long_description() -> str:
     return (
-        open("README.md", encoding="utf8").read().strip() + "\n\n" + open("CHANGELOG,md", encoding="utf8").read().strip()
+        open("README.md", encoding="utf8").read().strip() + "\n\n" + open("CHANGELOG.md", encoding="utf8").read().strip()
     )
 
 
