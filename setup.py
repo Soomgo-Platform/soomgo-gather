@@ -34,7 +34,7 @@ setuptools.setup(
     description="",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
-    keywords="",
+    keywords="Naver,NaverSearchAD,GA,collect,data,gather,soomgo-gather,soomgo",
     author="Brave Mobile Co., Ltd.",
     author_email="platform@soomgo.com",
     project_urls={
