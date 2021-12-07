@@ -23,7 +23,6 @@ Contributing 방법
     b. PR생성 방법
     * master 브랜치를 타겟으로 PR을 생성한다.
 
-
 Contributors
 ------------
 
