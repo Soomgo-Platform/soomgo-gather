@@ -1,16 +1,15 @@
+from google.ads.googleads.client import GoogleAdsClient
 from marshmallow import Schema, ValidationError, fields, validate
 
-from google.ads.googleads.client import GoogleAdsClient
 
-
-class GoogleAds():
+class GoogleAds:
     """GoogleAds search_stream_request
 
     GoogleAds를 사용한다는 것은 GoogleAds의 API를 사용한다는 의미이기 때문에 Class 생성시 GoogleAds서비스까지 생성한다.
 
     query data 요청시 parameter는 다른 soomgo-gather와의 프로토콜을 동일하게 하기 위해 json 형식을 사용한다.
 
-    Google developer key를 인스턴스의 기본설정 값(GOOGLE_ADS_CONFIGURATION_FILE_PATH)이나 
+    Google developer key를 인스턴스의 기본설정 값(GOOGLE_ADS_CONFIGURATION_FILE_PATH)이나
     google developer 키파일(.yaml) 또는 dict를 사용하여 GoogleAds 서비스 객체를 생성한다.
 
     생성한 GoogleAds 인스턴스를 사용하여 쿼리를 통해 원하는 데이터에 대한 통계 정보를 얻을 수 있다.
@@ -53,8 +52,8 @@ class GoogleAds():
 
     def __init__(self, key_file=None, dict=None, version="v8"):
         if key_file is not None:
-            self.client = self. _create_client_from_file(key_file, version)
-        elif dict is  not None:
+            self.client = self._create_client_from_file(key_file, version)
+        elif dict is not None:
             self.client = self._create_client_from_dict(dict, version)
         else:
             self.client = self._create_client_from_default(version)
@@ -64,7 +63,9 @@ class GoogleAds():
         query = fields.Str(required=True)
         customer_id = fields.Str(required=True)
         summary_row_setting = fields.Str(
-            validate=validate.OneOf(['UNSPECIFIED','UNKNOWN','NO_SUMMARY_ROW','SUMMARY_ROW_WITH_RESULTS','SUMMARY_ROW_ONLY'])
+            validate=validate.OneOf(
+                ['UNSPECIFIED', 'UNKNOWN', 'NO_SUMMARY_ROW', 'SUMMARY_ROW_WITH_RESULTS', 'SUMMARY_ROW_ONLY']
+            )
         )
 
     def _get_params(self, params):
@@ -104,9 +105,11 @@ class GoogleAds():
         search_request = self.client.get_type("SearchGoogleAdsStreamRequest")
         search_request.customer_id = params.get('customer_id')
         search_request.query = params.get('query')
-
+        print(params)
         if "summary_row_setting" in params:
-            summary = getattr(self.client.get_type('SummaryRowSettingEnum').SummaryRowSetting,params.get('summary_row_setting'))
+            summary = getattr(
+                self.client.get_type('SummaryRowSettingEnum').SummaryRowSetting, params.get('summary_row_setting')
+            )
             search_request.summary_row_setting = summary.value
 
         stream = self.service.search_stream(search_request)

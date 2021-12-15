@@ -1,19 +1,23 @@
+import pandas as pd
+from google.ads.googleads.client import GoogleAdsClient
+from google.ads.googleads.v8.enums.types.summary_row_setting import SummaryRowSettingEnum
+from google.ads.googleads.v8.services.services.google_ads_service.client import GoogleAdsServiceClient
+from google.ads.googleads.v8.services.types.google_ads_service import SearchGoogleAdsStreamRequest
 
 from soomgogather.google import GoogleAds
-import pandas as pd
 
-customer_id = "123456"
+customer_id = "1231231"
 
 query = """
   SELECT
     campaign.id,
     ad_group.id,
-    ad_group_criterion.criterion_id, 
-    ad_group_criterion.age_range.type, 
-    ad_group_criterion.status, 
+    ad_group_criterion.criterion_id,
+    ad_group_criterion.age_range.type,
+    ad_group_criterion.status,
     ad_group.cpc_bid_micros,
     ad_group.cpm_bid_micros,
-    ad_group.cpv_bid_micros, 
+    ad_group.cpv_bid_micros,
     ad_group_criterion.final_urls,
     ad_group_criterion.final_url_suffix,
     metrics.average_cost
@@ -27,68 +31,95 @@ params = {
     'customer_id': customer_id,
 }
 
-def _create_client_from_file():
+
+def _create_client_from_file(mocker):
+    mocker.patch('google.ads.googleads.client.GoogleAdsClient.load_from_storage', return_value=GoogleAdsClient)
+    mocker.patch('google.ads.googleads.client.GoogleAdsClient.get_service', return_value=GoogleAdsServiceClient)
 
     service = GoogleAds(key_file='api_google_googleads.yaml')
 
     return service
 
-def _create_client_from_dict():
+
+def _create_client_from_dict(mocker):
+    mocker.patch('google.ads.googleads.client.GoogleAdsClient.load_from_dict', return_value=GoogleAdsClient)
+    mocker.patch('google.ads.googleads.client.GoogleAdsClient.get_service', return_value=GoogleAdsServiceClient)
 
     credentials_dict = {
-        'developer_token': 'developer_token',
-        'refresh_token': 'refresh_token',
-        'client_id': '434sdfx-123zdfserw.apps.googleusercontent.com',
-        'client_secret': 'GSDE4R-ADCSER',
+        'developer_token': 'AEARD234sd3w_Es2',
+        'refresh_token': 'SD32rssdf42-AsdF435sf-VSSD3sfxv',
+        'client_id': '134463443-4SFxfwdxx.apps.googleusercontent.com',
+        'client_secret': 'HESDFES8-SNsdfSEF',
         'use_proto_plus': True,
-        'login_customer_id': "5422345",
-        }
+        'login_customer_id': "2352373",
+    }
 
     service = GoogleAds(dict=credentials_dict)
 
     return service
 
-def _create_client_from_default():
+
+def _create_client_from_default(mocker):
+    mocker.patch('google.ads.googleads.client.GoogleAdsClient.load_from_storage', return_value=GoogleAdsClient)
+    mocker.patch('google.ads.googleads.client.GoogleAdsClient.get_service', return_value=GoogleAdsServiceClient)
 
     service = GoogleAds()
 
     return service
 
-def test_googleads_stream_file():
-    service = _create_client_from_file()
+
+def test_googleads_stream_file(mocker):
+    mocker.patch('google.ads.googleads.client.GoogleAdsClient.get_type', return_value=SearchGoogleAdsStreamRequest)
+    mocker.patch(
+        'google.ads.googleads.v8.services.services.google_ads_service.client.GoogleAdsServiceClient.search_stream',
+        return_value='success',
+    )
+    service = _create_client_from_file(mocker)
     stream = service.search_stream_request(params)
-    
-    for batch in stream:
-        for row in batch.results:
-            campaign = row.campaign
-            ad_group = row.ad_group
-            criterion = row.ad_group_criterion
-            print(
-                f'CampaignId" {campaign.id}"  '
-                f'AdGroupId" {ad_group.id}" '
-                f'CriterionId" {criterion.criterion_id}" '
-                f'Status" {criterion.status}" '
-                f'CpcBid" {ad_group.cpc_bid_micros}" '
-                f'CpmBid" {ad_group.cpm_bid_micros}" '
-                f'CpvBid" {ad_group.cpv_bid_micros}" '
-                f'FinalUrls" {criterion.final_urls}" '
-            )
+
     assert stream
 
-def test_googleads_stream_dict():
 
-    service = _create_client_from_dict()
-    stream = service.search_stream_request(params)
-    # _print_data(stream)
-    assert stream
+def test_googleads_stream_dict(mocker):
+    mocker.patch('google.ads.googleads.client.GoogleAdsClient.get_type', return_value=SearchGoogleAdsStreamRequest)
+    mocker.patch(
+        'google.ads.googleads.v8.services.services.google_ads_service.client.GoogleAdsServiceClient.search_stream',
+        return_value='success',
+    )
 
-def test_googleads_stream_default():
-    import os
-    os.environ["GOOGLE_ADS_CONFIGURATION_FILE_PATH"] = "/Users/rosa/Downloads/api_google_googleads (2).yaml"
+    params = {
+        'query': query,
+        'customer_id': customer_id,
+        'summary_row_setting': 'UNSPECIFIED',
+    }
 
-    service = _create_client_from_default()
+    service = _create_client_from_dict(mocker)
+
     try:
-        stream = service.search_stream_request(params)
+        service.search_stream_request(params)
+    except Exception as err:
+        assert type(err) == AttributeError
+
+
+def test_googleads_stream_default(mocker):
+    mocker.patch('google.ads.googleads.client.GoogleAdsClient.get_type', return_value=SearchGoogleAdsStreamRequest)
+    mocker.patch(
+        'google.ads.googleads.v8.services.services.google_ads_service.client.GoogleAdsServiceClient.search_stream',
+        return_value='success',
+    )
+
+    import os
+
+    os.environ["GOOGLE_ADS_CONFIGURATION_FILE_PATH"] = "api_google_googleads.yaml"
+
+    params = {
+        'query': query,
+        'customer_id': customer_id,
+        'summary_row_setting': 'UNSPECIFIED!',
+    }
+
+    service = _create_client_from_default(mocker)
+    try:
+        service.search_stream_request(params)
     except Exception as err:
         assert type(err) == ValueError
-
