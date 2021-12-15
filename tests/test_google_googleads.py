@@ -1,4 +1,3 @@
-import pandas as pd
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.v8.enums.types.summary_row_setting import SummaryRowSettingEnum
 from google.ads.googleads.v8.services.services.google_ads_service.client import GoogleAdsServiceClient
