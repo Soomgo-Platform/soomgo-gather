@@ -10,3 +10,6 @@ https://developers.google.com/webmaster-tools/search-console-api-original/v3
 
 .. autoclass:: soomgogather.google.searchconsole.SearchConsole
     :members:
+
+.. autoclass:: soomgogather.google.googleads.GoogleAds
+    :members:

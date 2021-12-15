@@ -3,8 +3,8 @@ import setuptools
 
 install_requires = [
     "marshmallow",
-    "google-api-core",
     "google-api-python-client",
+    "google-ads",
 ]
 
 tests_requires = [
