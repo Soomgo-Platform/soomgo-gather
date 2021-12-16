@@ -76,7 +76,7 @@ class GoogleAds:
             try:
                 params["summary_row_setting"] = params["summary_row_setting"].upper()
             except ValidationError as err:
-                raise ValueError(f"'summary_row_setting' is a string type.")
+                raise ValueError(f"summary_row_setting is a string type.: {err}")
         try:
             return self._GoogleAdsSchema().load(params)
         except ValidationError as err:
