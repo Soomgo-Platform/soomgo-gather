@@ -39,8 +39,10 @@ class GoogleAds:
         ...     'use_proto_plus': True,
         ...     'login_customer_id': '<<PUT YOUR LOGIN CUSTOMER ID>>',
         >>> }
+        >>> # If using file
+        >>> # credentials_dict = { 'key_file':'<<PUT YOUR KEY FILE(.yaml) PATH>>', }
 
-        >>> service = GoogleAds(dict=credentials_dict)
+        >>> service = GoogleAds(credentials=credentials_dict)
         >>> stream = service.search_stream_request(params)
 
         >>> for batch in stream:
@@ -50,13 +52,14 @@ class GoogleAds:
 
     """
 
-    def __init__(self, key_file=None, dict=None, version="v8"):
-        if key_file is not None:
-            self.client = self._create_client_from_file(key_file, version)
-        elif dict is not None:
-            self.client = self._create_client_from_dict(dict, version)
-        else:
+    def __init__(self, credentials=None, version="v8"):
+        if credentials is None:
             self.client = self._create_client_from_default(version)
+        elif 'key_file' in credentials:
+            self.client = self._create_client_from_file(credentials.get('key_file'), version)
+        else:
+            self.client = self._create_client_from_dict(credentials, version)
+
         self.service = self.client.get_service("GoogleAdsService")
 
     class _GoogleAdsSchema(Schema):
@@ -70,7 +73,10 @@ class GoogleAds:
 
     def _get_params(self, params):
         if "summary_row_setting" in params:
-            params["summary_row_setting"] = params["summary_row_setting"].upper()
+            try:
+                params["summary_row_setting"] = params["summary_row_setting"].upper()
+            except ValidationError as err:
+                raise ValueError(f"'summary_row_setting' is a string type.")
         try:
             return self._GoogleAdsSchema().load(params)
         except ValidationError as err:
@@ -94,7 +100,7 @@ class GoogleAds:
         **params:**
          - query: 데이터를 추출할 쿼리 (required)
          - customer_id: GoogleAds customer ID (required)
-         - summary_row_setting: summary row에 대한 설정
+         - summary_row_setting: summary row에 대한 설정 (option)
                 UNSPECIFIED : 명시되지 않음.
                 UNKNOWN : 반환 요약 행의 unknown 값을 표시.
                 NO_SUMMARY_ROW : 요약 행을 반환하지 않음.
@@ -105,7 +111,7 @@ class GoogleAds:
         search_request = self.client.get_type("SearchGoogleAdsStreamRequest")
         search_request.customer_id = params.get('customer_id')
         search_request.query = params.get('query')
-        print(params)
+
         if "summary_row_setting" in params:
             summary = getattr(
                 self.client.get_type('SummaryRowSettingEnum').SummaryRowSetting, params.get('summary_row_setting')

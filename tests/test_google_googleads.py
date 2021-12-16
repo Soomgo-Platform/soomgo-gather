@@ -35,7 +35,11 @@ def _create_client_from_file(mocker):
     mocker.patch('google.ads.googleads.client.GoogleAdsClient.load_from_storage', return_value=GoogleAdsClient)
     mocker.patch('google.ads.googleads.client.GoogleAdsClient.get_service', return_value=GoogleAdsServiceClient)
 
-    service = GoogleAds(key_file='api_google_googleads.yaml')
+    credentials_dict = {
+        'key_file': 'api_google_googleads.yaml'
+    }
+
+    service = GoogleAds(credentials=credentials_dict)
 
     return service
 
@@ -53,8 +57,7 @@ def _create_client_from_dict(mocker):
         'login_customer_id': "2352373",
     }
 
-    service = GoogleAds(dict=credentials_dict)
-
+    service = GoogleAds(credentials=credentials_dict)
     return service
 
 
