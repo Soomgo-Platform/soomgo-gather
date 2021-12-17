@@ -46,32 +46,6 @@ class MasterReport(BaseSearchAD):
     class _MasterReportSchema(Schema):
         item = fields.Str(
             attribute='item',
-            validate=validate.OneOf(
-                [
-                    'Account',
-                    'Campaign',
-                    'CampaignBudget',
-                    'BusinessChannel',
-                    'Adgroup',
-                    'AdgroupBudget',
-                    'Keyword',
-                    'Ad',
-                    'AdExtension',
-                    'Qi',
-                    'Label',
-                    'LabelRef',
-                    'Media',
-                    'Biz',
-                    'SeasonalEvent',
-                    'ShoppingProduct',
-                    'ContentsAd',
-                    'PlaceAd',
-                    'CatalogAd',
-                    'AdQi',
-                    'ProductGroup',
-                    'ProductGroupRel',
-                ]
-            ),
             required=True,
         )
 
@@ -97,29 +71,6 @@ class MasterReport(BaseSearchAD):
 
         **params:**
           - *item* (`str`) : 제공되는 광고 정보 목록 (네이버에서 제공하는 항목 중에 선택)
-              - Account: 계정 마스터 (내가 권한을 받았거나 권한을 설정 요청을 받은 계정목록을 제공)
-              - Campaign: 캠페인 마스터 (특정 광고 계정에서 현재 유효한 모든 캠페인 정보를 제공)
-              - CampaignBudget: 캠페인 예산 마스터 (캠페인의 예산 설정 사항을 제공)
-              - BusinessChannel: 비즈니스채널 마스터 (특정 광고 계정에서 현재 유효한 비즈채널 정보를 제공)
-              - Adgroup: 그룹 마스터 (특정 광고 계정에서 현재 유효한 광고 그룹의 정보를 제공)
-              - AdgroupBudget: 그룹 예산 마스터 (광고 그룹의 예산 설정 사항을 제공)
-              - Keyword: 등록 키워드 마스터 (특정 광고 계정에서 현재 유효한 등록 키워드 정보를 제공)
-              - Ad: 소재 마스터 (특정 광고 계정에서 현재 유효한 등록 소재 정보를 제공)
-              - AdExtension: 확장소재 마스터 (특정 광고 계정 내 현재 유효한 등록 확장소재 정보를 제공)
-              - Qi: 품질지수 마스터 (특정 광고 계정 내 현재 유효한 등록 키워드의 품질지수는 1부터 7단계로 제공)
-              - Label: 즐겨찾기 마스터 (특정 광고 계정 내 현재 유효한 즐겨찾기 목록을 제공)
-              - LabelRef: 즐겨찾기설정 마스터 (특정 광고 계정 내 현재 설정된 즐겨찾기별 항목 목록을 제공)
-              - Media: 광고매체 마스터 (네이버 검색광고에서 광고가 노출되는 매체 정보를 제공, 클릭초이스 광고 매체를 기준한다)
-              - Biz: 업종코드 마스터 (네이버 검색광고에서 사용되는 업종 리스트를 제공)
-              - SeasonalEvent: SeasonalEventCode
-              - ShoppingProduct: 쇼핑상품마스터
-                (Shopping Product Ad, 쇼핑 검색광고에서 사용 되는 소재 마스터, 쇼핑몰 상품형 광고 그룹 유형인 광고 그룹에 등록된 소재 정보를 제공)
-              - ContentsAd: 컨텐츠소재마스터 (콘텐츠 검색광고 삼풍세ㅓ 사용되는 소재 마스터)
-              - PlaceAd: Place Contents
-              - CatalogAd: Catalog
-              - AdQi: Ad Quality Index
-              - ProductGroup: Product Group
-              - ProductGroupRel: Product Group Relation
           - *from_time* (`str, optional`) - 특정 시점 (ISO 8601 UTC, 2021-12-01T00:00:00Z)
 
         """
@@ -127,10 +78,10 @@ class MasterReport(BaseSearchAD):
         return self.call('POST', self.default_path, params=self._get_params(params))
 
     def get(self, job_id):
-        """특정 id를 사용해서 해당 마스터 리포트의 작업 상세 정보를 가져온다.
+        """특정 job_id를 사용해서 해당 마스터 리포트의 작업 상세 정보를 가져온다.
 
-        :param id: 유효한 마스터 리포트 Job id
-        :type id: str
+        :param job_id: 유효한 마스터 리포트 Job id
+        :type job_id: str
         """
 
         return self.call('GET', f'{self.default_path}/{job_id}')
@@ -142,7 +93,7 @@ class MasterReport(BaseSearchAD):
     def delete(self, job_id):
         """해당 마스터 리포트를 job id로 삭제한다.
 
-        :param id: 유효한 마스터 리포트 Job id
-        :type id: str
+        :param job_id: 유효한 마스터 리포트 Job id
+        :type job_id: str
         """
         return self.call('DELETE', f'{self.default_path}/{job_id}')
