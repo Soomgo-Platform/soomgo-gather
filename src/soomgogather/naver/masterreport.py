@@ -1,4 +1,3 @@
-import requests_mock
 from marshmallow import Schema, ValidationError, fields, validate
 
 from ._searchad import BaseSearchAD

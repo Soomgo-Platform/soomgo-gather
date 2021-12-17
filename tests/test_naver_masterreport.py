@@ -1,6 +1,5 @@
 import pytest
 import requests_mock
-from marshmallow import ValidationError
 
 from soomgogather.naver import MasterReport
 
