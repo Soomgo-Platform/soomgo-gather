@@ -112,7 +112,8 @@ class MasterReport(BaseSearchAD):
               - Media: 광고매체 마스터 (네이버 검색광고에서 광고가 노출되는 매체 정보를 제공, 클릭초이스 광고 매체를 기준한다)
               - Biz: 업종코드 마스터 (네이버 검색광고에서 사용되는 업종 리스트를 제공)
               - SeasonalEvent: SeasonalEventCode
-              - ShoppingProduct: 쇼핑상품마스터(Shopping Product Ad) (쇼핑 검색광고에서 사용 되는 소재 마스터, 쇼핑몰 상품형 광고 그룹 유형인 광고 그룹에 등록된 소재 정보를 제공)
+              - ShoppingProduct: 쇼핑상품마스터
+                (Shopping Product Ad, 쇼핑 검색광고에서 사용 되는 소재 마스터, 쇼핑몰 상품형 광고 그룹 유형인 광고 그룹에 등록된 소재 정보를 제공)
               - ContentsAd: 컨텐츠소재마스터 (콘텐츠 검색광고 삼풍세ㅓ 사용되는 소재 마스터)
               - PlaceAd: Place Contents
               - CatalogAd: Catalog
