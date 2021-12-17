@@ -78,6 +78,13 @@ def test_masterreport_create_fail():
     with pytest.raises(ValueError):
         masterreport.create(fail_params)
 
+    fail_params = {'item': 'invalid item'}
+
+    with requests_mock.Mocker() as _mock:
+        _mock.post(url, status_code=400)
+        r = masterreport.create(params=params)
+        assert r.status_code == 400
+
 
 def test_masterreport_delete_all():
 
