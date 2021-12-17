@@ -100,6 +100,19 @@ def test_googleads_stream_dict(mocker):
     except Exception as err:
         assert type(err) == AttributeError
 
+    params = {
+        'query': query,
+        'customer_id': customer_id,
+        'summary_row_setting': {'row_setting': 'SUMMARY_ROW_ONLY'},
+    }
+
+    service = _create_client_from_dict(mocker)
+
+    try:
+        service.search_stream_request(params)
+    except Exception as err:
+        assert type(err) == ValueError
+
 
 def test_googleads_stream_default(mocker):
     mocker.patch('google.ads.googleads.client.GoogleAdsClient.get_type', return_value=SearchGoogleAdsStreamRequest)

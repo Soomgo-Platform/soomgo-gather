@@ -53,13 +53,7 @@ class GoogleAds:
     """
 
     def __init__(self, credentials=None, version="v8"):
-        if credentials is None:
-            self.client = self._create_client_from_default(version)
-        elif 'key_file' in credentials:
-            self.client = self._create_client_from_file(credentials.get('key_file'), version)
-        else:
-            self.client = self._create_client_from_dict(credentials, version)
-
+        self.client = self._create_client(credentials, version)
         self.service = self.client.get_service("GoogleAdsService")
 
     class _GoogleAdsSchema(Schema):
@@ -75,24 +69,21 @@ class GoogleAds:
         if "summary_row_setting" in params:
             try:
                 params["summary_row_setting"] = params["summary_row_setting"].upper()
-            except ValidationError as err:
+            except AttributeError as err:
                 raise ValueError(f"summary_row_setting is a string type.: {err}")
         try:
             return self._GoogleAdsSchema().load(params)
         except ValidationError as err:
             raise ValueError(f"incorrect parameters: {err}")
 
-    def _create_client_from_file(self, key_file, version):
-        client = GoogleAdsClient.load_from_storage(path=key_file, version=version)
-        return client
-
-    def _create_client_from_dict(self, dict, version):
-        client = GoogleAdsClient.load_from_dict(dict, version=version)
-        return client
-
-    def _create_client_from_default(self, version):
-        client = GoogleAdsClient.load_from_storage(version=version)
-        return client
+    def _create_client(self, credentials, version):
+        if credentials is None:
+            _client = GoogleAdsClient.load_from_storage(version=version)
+        elif 'key_file' in credentials:
+            _client = GoogleAdsClient.load_from_storage(path=credentials.get('key_file'), version=version)
+        else:
+            _client = GoogleAdsClient.load_from_dict(credentials, version=version)
+        return _client
 
     def search_stream_request(self, params):
         """전달한 필터와 조건에 맞는 GoogleAds 정보를 받아온다.
