@@ -47,18 +47,19 @@ class RelKwdStat(BaseSearchAD):
     def list(self, params={}):
         """파라미터의 조건에 맞는 키워드의 지표를 반환한다.
 
-        **params:**
+        :param params: 연관 검색어 데이터를 받아오기 위한 매개변수, ``show_detail`` 을 제외한 5개의 파라미터 중 1개 이상 지정되어야 결과값이 나옴
+        :type params: dict
 
-        ``show_detail`` 을 제외한 5개의 파라미터 중 1개 이상 지정되어야 결과값이 나옴
-         - site_id: 채널타입이 SITE인 비즈니스 채널 ID(nccBusinessChannelId)
-         - biztp_id: 비즈니스 타입 ID
-         - hint_keywords: 검색어 - comma(,)로 구분하여 5개까지 가능, 공백 허용 안됨
+        **params:**
+            - *site_id* (`str`) : 채널타입이 SITE인 비즈니스 채널 ID(nccBusinessChannelId)
+            - *biztp_id* (`int`) :: 비즈니스 타입 ID
+            - *hint_keywords* (`str`) : 검색어 - comma(,)로 구분하여 5개까지 가능, 공백 허용 안됨
                 ex) ```soomgo, 숨고``` (X) ```soomgo,숨 고``` (X) ```soomgo,숨고``` (O)
-         - event: 시즌테마
-            - https://gist.github.com/naver-searchad/235202ffb08f9433b6f7cb10e45875f7#file-seasonal_event_code-md
-         - month: 월
-         - show_detail: 상세정보 조회 여부
-            - 0: 상세정보 조회안함(기본값)
-            - 1: 상세정보 조회
+            - *event* (`int`) : 시즌테마
+                - https://gist.github.com/naver-searchad/235202ffb08f9433b6f7cb10e45875f7#file-seasonal_event_code-md
+            - *month* (`int`) : 월
+            - *show_detail* (`int`) : 상세정보 조회 여부
+                - 0: 상세정보 조회안함(기본값)
+                - 1: 상세정보 조회
         """
         return self.call('GET', '/keywordstool', params=self._get_params(params))

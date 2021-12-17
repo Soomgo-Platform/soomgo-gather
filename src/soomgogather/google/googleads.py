@@ -49,7 +49,6 @@ class GoogleAds:
         ...     for row in batch.results:
         ...         matrics = row.matrics
         ...         print(matrics.clicks)
-
     """
 
     def __init__(self, credentials=None, version="v8"):
@@ -90,18 +89,21 @@ class GoogleAds:
             self.client.get_type('SummaryRowSettingEnum').SummaryRowSetting, params['summary_row_setting']
         ).value
 
-    def search_stream_request(self, params):
+    def search_stream_request(self, params={}):
         """전달한 필터와 조건에 맞는 GoogleAds 정보를 받아온다.
 
+        :param params: stream request를 위한 매개변수, query, customer_id는 필수
+        :type params: dict
+
         **params:**
-         - query: 데이터를 추출할 쿼리 (required)
-         - customer_id: GoogleAds customer ID (required)
-         - summary_row_setting: summary row에 대한 설정 (option)
-                UNSPECIFIED : 명시되지 않음.
-                UNKNOWN : 반환 요약 행의 unknown 값을 표시.
-                NO_SUMMARY_ROW : 요약 행을 반환하지 않음.
-                SUMMARY_ROW_WITH_RESULTS : 결과와 함께 요약 행을 반환. 요약 행은 마지막 배치에서만 반환(마지막 배치에는 결과가 포함되지 않음).
-                SUMMARY_ROW_ONLY : 요약 행만 반환하고 결과는 반환하지 않음.
+            - *query* (`str`) : 데이터를 추출할 쿼리
+            - *customer_id* (`str`) : GoogleAds customer ID
+            - *summary_row_setting* (`str, optional`) - summary row에 대한 설정
+                - UNSPECIFIED : 명시되지 않음.
+                - UNKNOWN : 반환 요약 행의 unknown 값을 표시.
+                - NO_SUMMARY_ROW : 요약 행을 반환하지 않음.
+                - SUMMARY_ROW_WITH_RESULTS : 결과와 함께 요약 행을 반환. 요약 행은 마지막 배치에서만 반환(마지막 배치에는 결과가 포함되지 않음).
+                - SUMMARY_ROW_ONLY : 요약 행만 반환하고 결과는 반환하지 않음.
         """
         params = self._get_params(params)
         search_request = self.client.get_type("SearchGoogleAdsStreamRequest")
