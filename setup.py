@@ -3,8 +3,8 @@ import setuptools
 
 install_requires = [
     "marshmallow",
-    "google-api-core",
     "google-api-python-client",
+    "google-ads",
 ]
 
 tests_requires = [
@@ -23,7 +23,9 @@ tests_requires = [
 
 def get_long_description() -> str:
     return (
-        open("README.md", encoding="utf8").read().strip() + "\n\n" + open("CHANGELOG.md", encoding="utf8").read().strip()
+        open("README.md", encoding="utf8").read().strip()
+        + "\n\n"
+        + open("CHANGELOG.md", encoding="utf8").read().strip()
     )
 
 
@@ -45,7 +47,7 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     package_dir={"": "src"},
     python_requires=">=3.6",
-    install_requires=[],
+    install_requires=install_requires,
     extras_require={"test": tests_requires},
     zip_safe=False,
     # test_suite=''
