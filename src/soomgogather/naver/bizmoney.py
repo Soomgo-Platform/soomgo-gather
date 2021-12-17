@@ -46,35 +46,47 @@ class Bizmoney(BaseSearchAD):
     def cost(self, params={}):
         """파라미터로 전달한 기간의 Bizmoney 사용된 금액을 반환한다.
 
+        :param params: 사용금액 데이터를 받아오기 위한 매개변수,  search_start_dt, search_end_dt 모두 필수
+        :type params: dict
+
         **params:**
-         - search_start_dt: 조회 시작일 (required)
-         - search_end_dt: 조회 종료일 (required)
+            - *search_start_dt* (`str`) : 조회 시작일, YYYYMMDD (KST)
+            - *search_end_dt* (`str`) : 조회 종료일, YYYYMMDD (KST)
         """
         return self.call('GET', '/billing/bizmoney/cost', params=self._get_params(params))
 
     def charge(self, params={}):
         """파라미터로 전달한 기간의 Bizmoney 충전 내역을 반환한다.
 
+        :param params: 충전 내역 데이터를 받아오기 위한 매개변수,  search_start_dt, search_end_dt 모두 필수
+        :type params: dict
+
         **params:**
-         - search_start_dt: 조회 시작일 (required)
-         - search_end_dt: 조회 종료일 (required)
+            - *search_start_dt* (`str`) : 조회 시작일, YYYYMMDD (KST)
+            - *search_end_dt* (`str`) : 조회 종료일, YYYYMMDD (KST)
         """
         return self.call('GET', '/billing/bizmoney/histories/charge', params=self._get_params(params))
 
     def exhaust(self, params={}):
         """파라미터로 전달한 기간의 Bizmoney 공제된 내역을 반환한다.
 
+        :param params: 공제 내역 데이터를 받아오기 위한 매개변수,  search_start_dt, search_end_dt 모두 필수
+        :type params: dict
+
         **params:**
-         - search_start_dt: 조회 시작일 (required)
-         - search_end_dt: 조회 종료일 (required)
+            - *search_start_dt* (`str`) : 조회 시작일, YYYYMMDD (KST)
+            - *search_end_dt* (`str`) : 조회 종료일, YYYYMMDD (KST)
         """
         return self.call('GET', '/billing/bizmoney/histories/exhaust', params=self._get_params(params))
 
     def period(self, params={}):
         """파라미터로 전달한 기간의 일자별 BizMoney 상태값을 반환한다.
 
+        :param params: 요청한 기간동안의 데이터를 받아오기 위한 매개변수,  search_start_dt, search_end_dt 모두 필수
+        :type params: dict
+
         **params:**
-         - search_start_dt: 조회 시작일 (required)
-         - search_end_dt: 조회 종료일 (required)
+            - *search_start_dt* (`str`) : 조회 시작일, YYYYMMDD (KST)
+            - *search_end_dt* (`str`) : 조회 종료일, YYYYMMDD (KST)
         """
         return self.call('GET', '/billing/bizmoney/histories/period', params=self._get_params(params))
