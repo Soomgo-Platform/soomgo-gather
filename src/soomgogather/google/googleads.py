@@ -85,6 +85,11 @@ class GoogleAds:
             _client = GoogleAdsClient.load_from_dict(credentials, version=version)
         return _client
 
+    def _get_summary(self, params):
+        return getattr(
+            self.client.get_type('SummaryRowSettingEnum').SummaryRowSetting, params['summary_row_setting']
+        ).value
+
     def search_stream_request(self, params):
         """전달한 필터와 조건에 맞는 GoogleAds 정보를 받아온다.
 
@@ -104,10 +109,7 @@ class GoogleAds:
         search_request.query = params.get('query')
 
         if "summary_row_setting" in params:
-            summary = getattr(
-                self.client.get_type('SummaryRowSettingEnum').SummaryRowSetting, params.get('summary_row_setting')
-            )
-            search_request.summary_row_setting = summary.value
+            search_request.summary_row_setting = self._get_summary(params=params)
 
         stream = self.service.search_stream(search_request)
 
