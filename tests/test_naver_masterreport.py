@@ -75,8 +75,10 @@ def test_masterreport_create_fail():
 
     fail_params = {'from_time': '2021-12-01T00:00:00Z'}
 
-    with pytest.raises(ValueError):
+    try:
         masterreport.create(fail_params)
+    except Exception as err:
+        assert type(err) == ValueError
 
     fail_params = {'item': 'invalid item'}
 
