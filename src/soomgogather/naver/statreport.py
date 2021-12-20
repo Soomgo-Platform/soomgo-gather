@@ -13,11 +13,10 @@ class StatReport(BaseSearchAD):
     다운로드된 항목에서 필요한 보고서 종류를 선태하고 생성 요청하여 사용할 수 있다. 
 
     * 대용량 보고서의 최대 제공 기간은 '최근 1년'이다. 유형에 따라 기간이 상이하다.
-    * 조회 기간을 선택하지 않으면 자동으로 전일 데이터로 생성되며 전일 부터 최대 1년까지 선택가능하다.
 
     https://naver.github.io/searchad-apidoc/#/tags/StatReport
 
-    사용 예시) 특정 시점을 기준으로 광고 계정에 광고 정보에 대한 Stat 리포트를 생성하고, 등록된 모든 광고 정보를 다운로드 할 수 있다.
+    사용 예시) 계정단위로 특정일에 발생한 광고 효과 보고서(Stat 리포트)를 생성하고, 등록된 모든 광고 효과 보고서를 다운로드 할 수 있다.
 
     .. code-block:: python
 
@@ -31,7 +30,7 @@ class StatReport(BaseSearchAD):
         ... })
 
         >>> if r.status_code == 204:
-        ...     print("AD_CONVERSION 광고 성과 보고서가 생성되었습니다.")
+        ...     print("AD_CONVERSION 광고 효과 보고서가 생성되었습니다.")
 
         >>> r = master_report.list()
 
