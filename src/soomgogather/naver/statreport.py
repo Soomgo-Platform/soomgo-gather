@@ -68,7 +68,7 @@ class StatReport(BaseSearchAD):
 
         **params:**
           - *reportTp* (`str`) : 제공되는 광고 성과 목록 (네이버에서 제공하는 항목 중에 선택)
-          - *statDt* (`str`) - 특정일 (ISO 8601(UTC): 2021-12-01T00:00:00Z, YYYYMMDD(KST): '20211201')
+          - *statDt* (`str`) - 특정일 (ISO 8601(UTC): 2021-12-01T00:00:00Z, YYYYMMDD(KST): 20211201)
         """
 
         return self.call('POST', self.default_path, params=self._get_params(params))
