@@ -12,7 +12,7 @@ class StatReport(BaseSearchAD):
     대용량 보고서 다운로드는 계정 단위로 특정일에 발생한 광고 효과 보고서를 다운로드하는 기능으로 일 단위로만 신청 가능하며, 기간별 조회 기능은 제공되지 않는다.
     다운로드 항목에서 필요한 보고서 종류를 선택하고 생성 요청하여 사용할 수 있다. 
 
-    * 대용량 보고서의 최대 제공 기간은 '최근 1년'이다. 유형에 따라 기간이 상이하다.
+    * 대용량 보고서의 최대 제공 기간은 최근 1년이다. 유형에 따라 기간이 상이하다.
 
     https://naver.github.io/searchad-apidoc/#/tags/StatReport
 
@@ -34,7 +34,7 @@ class StatReport(BaseSearchAD):
 
         >>> r = master_report.list()
 
-        >>> r.status_code == 200:
+        >>> if r.status_code == 200:
         ...     print(r.json())
 
     """
