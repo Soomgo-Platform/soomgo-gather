@@ -18,7 +18,11 @@ def test_masterreport_list():
 def test_masterreport_get():
 
     with requests_mock.Mocker() as _mock:
-        _mock.get(f'{url}/{job_id}', status_code=200, json='-')
+        _mock.get(
+            f'{url}/{job_id}',
+            status_code=200,
+            json='-'
+            )
         masterreport.get(job_id)
 
         assert _mock.called
@@ -27,7 +31,11 @@ def test_masterreport_get():
 def test_masterreport_create():
 
     with requests_mock.Mocker() as _mock:
-        _mock.post(url, status_code=201, json='_')
+        _mock.post(
+            url,
+            status_code=201,
+            json='_'
+            )
         masterreport.create(params={'item': 'AdExtension'})
         assert _mock.called
 
