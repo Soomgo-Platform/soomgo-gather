@@ -19,7 +19,7 @@ class MasterReport(BaseSearchAD):
 
     https://naver.github.io/searchad-apidoc/#/tags/MasterReport
 
-    사용 예시) 특정 시점을 기준으로 광고 계정에 등록된 모든 광고 정보를 다운로드 할 수 있다.
+    사용 예시) 특정 시점을 기준으로 광고 계정에 광고 정보에 대한 마스터리포트를 생성하고, 등록된 모든 광고 정보를 다운로드 할 수 있다.
 
     .. code-block:: python
 
