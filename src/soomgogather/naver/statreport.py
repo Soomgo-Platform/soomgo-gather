@@ -21,16 +21,17 @@ class StatReport(BaseSearchAD):
 
     .. code-block:: python
 
-        >>> from soomgogather.naver import MasterReport
+        >>> from soomgogather.naver import StatReport
 
-        >>> master_report = MasterReport(api_key='_', secret_key='_', customer_id='_')
+        >>> stat_report = StatReport(api_key='_', secret_key='_', customer_id='_')
 
-        >>> r = master_report.create(params={
-        ...     'item': 'Media',
+        >>> r = stat_report.create(params={
+        ...     'report_type': 'AD_CONVERSION',
+        ...     'report_date': '20211201',
         ... })
 
-        >>> r.status_code == 204:
-        ...     print("Media 광고 정보가 생성되었습니다.")
+        >>> if r.status_code == 204:
+        ...     print("AD_CONVERSION 광고 성과 보고서가 생성되었습니다.")
 
         >>> r = master_report.list()
 
@@ -46,7 +47,6 @@ class StatReport(BaseSearchAD):
             attribute='reportTp',
             required=True,
         )
-
         report_date = fields.Str(attribute="statDt", required=True,)
 
     def _get_params(self, params):
@@ -62,13 +62,12 @@ class StatReport(BaseSearchAD):
     def create(self, params):
         """필요한 항목을 선택하여 대용량 보고서(Stat Report)를 요청하고, 특정일에 발생한 광고 효과 보고서를 생성한다.
 
-        :param params: 쿼리 스트링을 구성하기 위한 매개변수, item은 필수
+        :param params: 쿼리 스트링을 구성하기 위한 매개변수
         :type params: dict
 
         **params:**
-          - *reportTp* (`str`) : 제공되는 광고 정보 목록 (네이버에서 제공하는 항목 중에 선택)
-          - *statDt* (`str`) - 특정일 (ISO 8601: 2021-12-01T00:00:00Z, KST: YYYYMMDD)
-
+          - *reportTp* (`str`) : 제공되는 광고 성과 목록 (네이버에서 제공하는 항목 중에 선택)
+          - *statDt* (`str`) - 특정일 (ISO 8601(UTC): 2021-12-01T00:00:00Z, YYYYMMDD(KST): '20211201')
         """
 
         return self.call('POST', self.default_path, params=self._get_params(params))
