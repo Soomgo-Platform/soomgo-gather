@@ -18,11 +18,7 @@ def test_statreport_list():
 def test_statreport_get():
 
     with requests_mock.Mocker() as _mock:
-        _mock.get(
-            f'{url}/{report_job_id}',
-            status_code=200,
-            json='-'
-            )
+        _mock.get(f'{url}/{report_job_id}', status_code=200, json='-')
         stat_report.get(report_job_id)
 
         assert _mock.called
@@ -31,11 +27,7 @@ def test_statreport_get():
 def test_statreport_create():
 
     with requests_mock.Mocker() as _mock:
-        _mock.post(
-            url,
-            status_code=201,
-            json='_'
-            )
+        _mock.post(url, status_code=201, json='_')
         stat_report.create(params={'report_type': 'AD_CONVERSION', 'report_date': '20211201'})
         assert _mock.called
 
