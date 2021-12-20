@@ -31,12 +31,12 @@ class MasterReport(BaseSearchAD):
         ...     'item': 'Media',
         ... })
 
-        >>> r.status_code == 204:
+        >>> if r.status_code == 204:
         ...     print("Media 광고 정보가 생성되었습니다.")
 
         >>> r = master_report.list()
 
-        >>> r.status_code == 200:
+        >>> if r.status_code == 200:
         ...     print(r.json())
 
     """
