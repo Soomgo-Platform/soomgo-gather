@@ -10,7 +10,7 @@ job_id = 'valid job id'
 
 def test_masterreport_list():
     with requests_mock.Mocker() as _mock:
-        _mock.get(url, status_code=200, json=[])
+        _mock.get(url, status_code=200, json='_')
         masterreport.list()
         assert _mock.called
 
@@ -21,18 +21,7 @@ def test_masterreport_get():
         _mock.get(
             f'{url}/{job_id}',
             status_code=200,
-            json={
-                'id': 'valid job id',
-                'fromTime': '',
-                'item': 'AdExtension',
-                'downloadUrl': 'https://api.naver.com/report-download?asdfasdfasdf',
-                'updateTime': '2021-12-16T07:44:00Z',
-                'status': 'BUILT',
-                'managerLoginId': '-',
-                'managerCustomerId': 000000,
-                'clientCustomerId': 000000,
-                'registTime': '2021-12-16T07:45:19.640Z',
-                }
+            json='-'
             )
         masterreport.get(job_id)
 
@@ -45,18 +34,7 @@ def test_masterreport_create():
         _mock.post(
             url,
             status_code=201,
-            json={
-                'id': 'F54A7CBD8693E824858FCCD29A6FC6A3',
-                'fromTime': '',
-                'item': 'AdExtension',
-                'downloadUrl': '',
-                'updateTime': '',
-                'status': 'REGIST',
-                'managerLoginId': '-',
-                'managerCustomerId': 000000,
-                'clientCustomerId': 000000,
-                'registTime': '2021-12-16T07:39:44.364Z',
-                }
+            json='_'
             )
         masterreport.create(params={'item': 'AdExtension'})
         assert _mock.called
