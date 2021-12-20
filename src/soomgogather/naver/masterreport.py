@@ -64,7 +64,7 @@ class MasterReport(BaseSearchAD):
     def create(self, params):
         """필요한 항목을 선택하여 마스터 리포트를 요청하고, 해당 항목에 대한 광고 정보 리포트를 생성한다.
 
-        # https://gist.github.com/naver-searchad/186ca42e1e8596b0e3dcf74e3a86c04f
+        https://gist.github.com/naver-searchad/186ca42e1e8596b0e3dcf74e3a86c04f
 
         :param params: 쿼리 스트링을 구성하기 위한 매개변수, item은 필수
         :type params: dict
