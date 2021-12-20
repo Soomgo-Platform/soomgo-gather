@@ -1,6 +1,7 @@
 import base64
 import hashlib
 import hmac
+import json
 import time
 
 import requests
@@ -47,6 +48,7 @@ class BaseSearchAD:
         )
 
     def call(self, method, path, params={}):
+
         return getattr(requests, method.lower())(
-            self.domain + path, params=params, headers=self.make_header(method, path)
+            self.domain + path, json=params, params=params, headers=self.make_header(method, path)
         )
