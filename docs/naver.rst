@@ -12,5 +12,7 @@ http://naver.github.io/searchad-apidoc
     :members:
 .. autoclass:: soomgogather.naver.relkwdstat.RelKwdStat
     :members:
+.. autoclass:: soomgogather.naver.masterreport.MasterReport
+    :members:
 .. autoclass:: soomgogather.naver.statreport.StatReport
     :members:
