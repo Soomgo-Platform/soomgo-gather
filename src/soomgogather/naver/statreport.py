@@ -32,7 +32,7 @@ class StatReport(BaseSearchAD):
         >>> if r.status_code == 204:
         ...     print("AD_CONVERSION 광고 효과 보고서가 생성되었습니다.")
 
-        >>> r = master_report.list()
+        >>> r = stat_report.list()
 
         >>> if r.status_code == 200:
         ...     print(r.json())
