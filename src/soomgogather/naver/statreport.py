@@ -62,6 +62,8 @@ class StatReport(BaseSearchAD):
     def create(self, params):
         """필요한 항목을 선택하여 대용량 보고서(Stat Report)를 요청하고, 특정일에 발생한 광고 효과 보고서를 생성한다.
 
+        https://naver.github.io/searchad-apidoc/#/operations/POST/~2Fstat-reports
+
         :param params: 쿼리 스트링을 구성하기 위한 매개변수
         :type params: dict
 
