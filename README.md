@@ -29,7 +29,10 @@ _Soomgo-gather_ 는 최소한의 시간으로 최대한 빨리 데이터를 수�
 * [Naver Search AD](https://searchad.naver.com/)
     * [Bizmoney](https://naver.github.io/searchad-apidoc/#/tags/Bizmoney)  
     * [RelKwdStat](https://naver.github.io/searchad-apidoc/#/tags/RelKwdStat)
+    * [MasterReport](https://naver.github.io/searchad-apidoc/#/tags/MasterReport)
+    * [StatReport](https://naver.github.io/searchad-apidoc/#/tags/StatReport)
 * [Google Search Console](https://search.google.com/search-console/about)
+* [Google Ads](https://developers.google.com/google-ads/api/reference/rpc/v9/SearchGoogleAdsStreamRequest)
 
 ## Installation and usage
 
