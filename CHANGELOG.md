@@ -23,6 +23,22 @@ Changes에는 총 5가지의 유형이 있습니다.
 - Contributors: 작업 참여자.
 
 
+Version 1.3
+-------------
+released: 2021-12-22
+
+**New**
+
+- Naver SearchAd - StatReport 배포
+- Naver SearchAd - MasterReport 배포
+- Google Ads - stream_request 배포
+
+**Contributors**
+
+- Daisy Kim
+- Paul Cho
+- Rosa Kim
+
 Version 1.2
 -------------
 released: 2021-12-07

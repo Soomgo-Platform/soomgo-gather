@@ -29,3 +29,5 @@ Contributors
 Paul Cho, 2021/11/11
 
 Rosa Kim, 2021/11/23
+
+Daisy Kim, 2021/12/22
