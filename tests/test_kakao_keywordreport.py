@@ -15,3 +15,9 @@ def test_keywordreport_report():
     with requests_mock.Mocker() as _mock:
         _mock.get(f'{k.domain}/{path}/report', status_code=200, json='_')
         assert k.report(params=params).status_code == 200
+
+
+def test_keywordreport_report_with_expired_access_token():
+    with requests_mock.Mocker() as _mock:
+        _mock.get(f'{k.domain}/{path}/report', status_code=401)
+        assert k.report(params=params).status_code == 401
