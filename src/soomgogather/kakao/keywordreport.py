@@ -59,10 +59,8 @@ class KeywordReport(BaseKakaoKeywordAD):
         dimension = fields.Str(attribute='dimension')
         timeunit = fields.Str(attribute='timeUnit')
 
-    # def __init__(self, path, **kwargs):
     def __init__(self, access_token, ad_account_id, path, **kwargs):
         super().__init__(access_token, ad_account_id, **kwargs)
-        # super(KeywordReport, self).__init__(**kwargs)
         self.path = f'/{path}/{self.default_path}'
         print(self.path)
 
