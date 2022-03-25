@@ -10,6 +10,7 @@ params = {
     'date_preset': 'TODAY',
 }
 
+
 def test_keywordreport_report():
     with requests_mock.Mocker() as _mock:
         _mock.get(f'{k.domain}/{path}/report', status_code=200, json='_')
