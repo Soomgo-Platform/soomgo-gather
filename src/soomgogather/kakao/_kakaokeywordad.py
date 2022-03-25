@@ -53,24 +53,34 @@ class BaseKakaoKeywordAD:
             print(f'Update ACCESS TOKEN from {self.access_token}')
 
             response = requests.post('https://kauth.kakao.com/oauth/token', data=data)
-            tokens = response.json()
-            self.access_token = tokens.get('access_token', self.access_token)
+            print(response)
 
-            if self.access_token_store_type:
-                if self.access_token_store_type == 'file':
-                    with open(self.tokens_file, 'w') as fp:
-                        json.dump(tokens, fp)
-                elif self.access_token_store_type == 'return':
-                    self.tokens = tokens
+            if response.status_code == 200:
+                tokens = response.json()
+                self.access_token = tokens.get('access_token', self.access_token)
+
+                if self.access_token_store_type:
+                    if self.access_token_store_type == 'file':
+                        print(f'Save new access token to {self.tokens_file}')
+                        with open(self.tokens_file, 'w') as fp:
+                            json.dump(tokens, fp)
+                    elif self.access_token_store_type == 'return':
+                        print('Store new access tokens in variable self.tokens')
+                        self.tokens = tokens
+                    elif self.access_token_store_type is None:
+                        print('Do not Save new access')
+                        pass
+            else:
+                print('Please Check {"user_refresh_token": {USER_REFRESH_TOKEN}, "rest_api_key": {REST_API_KEY}}')
 
         else:
-            print('Please update {"refresh_token": {REFRESH_TOKEN}, "client_id": {REST_API_KEY}}')
+            print('Please Update {"user_refresh_token": {USER_REFRESH_TOKEN}, "rest_api_key": {REST_API_KEY}}')
 
     def call(self, method, path, params={}):
         r = getattr(requests, method.lower())(
             self.domain + path, json=params, params=params, headers=self.make_header()
         )
-        print(r.url)
+        print(r.url, r.status_code)
 
         if r.status_code == 401:
             print('Refresth Access Token')
