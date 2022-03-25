@@ -31,3 +31,10 @@ def test_refresh_token():
         if all([k.user_refresh_token, k.rest_api_key]):
             k._refresh_token()
             assert _mock.called
+
+
+def test_wrong_parameters_fail():
+    try:
+        k.report(params={'metrics_groups': 'ERRORGROUP'})
+    except Exception as err:
+        assert type(err) == ValueError
