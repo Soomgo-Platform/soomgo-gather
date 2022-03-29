@@ -26,6 +26,19 @@ def test_keywordreport_report_success():
         assert k.report(params=params).status_code == 200
 
 
+def test_keywordreport_report_success_with_401():
+    with patch('soomgogather.kakao.keywordreport.KeywordReport._refresh_token') as mock:
+        k = KeywordReport(
+            path='adAccounts',
+            access_token='invalid',
+            ad_account_id='_',
+            user_refresh_token='vaild',
+            rest_api_key='vaild',
+        )
+        k.report(params={})
+        mock.assert_called_once()
+
+
 def test_wrong_parameters_fail():
     try:
         k.report(params={'abcd': 'ERROR'})

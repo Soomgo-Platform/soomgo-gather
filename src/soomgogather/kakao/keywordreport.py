@@ -89,4 +89,8 @@ class KeywordReport(BaseKakaoKeywordAD):
             - *date_preset* (`str`) : datePreset 파라미터 (default TODAY)
 
         """
-        return self.call('GET', self.path, params=self._get_params(params))
+        r = self.call('GET', self.path, params=self._get_params(params))
+        if r.status_code == 401:
+            self._refresh_token()
+            r = self.call('GET', self.path, params=self._get_params(params))
+        return r

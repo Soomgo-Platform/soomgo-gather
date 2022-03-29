@@ -36,33 +36,3 @@ def test_refresh_token_fail():
 
     except Exception as err:
         assert type(err) == ValueError
-
-
-# def test_call_recursive():
-
-
-# def test_refresh_token_fail_no_argument():
-#     k = KeywordReport(
-#         path='adAccounts',
-#         access_token='_',
-#         ad_account_id='_',
-#     )
-#     if all([k.user_refresh_token, k.rest_api_key]):
-#         pass
-#     else:
-#         try:
-#             k._refresh_token()
-#         except Exception as err:
-#             assert type(err) == ValueError
-
-
-def test_refresh_token_success_file():
-    print('file_save')
-
-
-def test_refresh_token_fail_request():
-    print('fail')
-
-
-def test_refresh_token_fail_grant():
-    print('grant')

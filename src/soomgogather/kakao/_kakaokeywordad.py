@@ -70,10 +70,6 @@ class BaseKakaoKeywordAD:
         r = getattr(requests, method.lower())(
             self.domain + path, json=params, params=params, headers=self.make_header()
         )
-        print("status_code: ", r.status_code, "/ url: ", r.url)
+        print(f"status_code: {r.status_code}, url: {r.url}")
 
-        if r.status_code == 401:
-            self._refresh_token()
-            return self.call(method, path, params)
-        else:
-            return r
+        return r
