@@ -35,14 +35,14 @@ class KeywordReport(BaseKakaoKeywordAD):
         >>> # access token이 유효하지 않은 경우
         >>> user_refresh_token = 'XXX'
         >>> rest_api_key = 'YYY'
-        >>> access_token_store_type = 'return'
+        >>> store_access_token = False
         >>> k = KeywordReport(
         ...    path='adAccounts',
         ...    access_token=access_token,
         ...    ad_account_id=ac_account_id
         ...    user_refresh_token=user_refresh_token,
         ...    rest_api_key=rest_api_key,
-        ...    access_token_store_type=access_token_store_type,
+        ...    store_access_token=store_access_token,
         ... )
 
         >>> print(k.access_token) # 새로운 access token 저장
