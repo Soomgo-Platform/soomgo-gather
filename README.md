@@ -82,7 +82,6 @@ k = KeywordReport(
   ad_account_id='_',
   user_refresh_token='_',
   rest_api_key='_',
-  access_token_store_type='file' # 'return', 'file', None
 )
 r = k.report()
 ```
