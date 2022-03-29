@@ -1,4 +1,5 @@
 import json
+
 import requests
 from marshmallow import Schema, fields
 
