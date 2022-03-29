@@ -1,6 +1,4 @@
 import json
-import time
-
 import requests
 from marshmallow import Schema, fields
 
