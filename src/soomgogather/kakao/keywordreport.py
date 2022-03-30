@@ -62,12 +62,10 @@ class KeywordReport(BaseKakaoKeywordAD):
     def __init__(self, access_token, ad_account_id, path, **kwargs):
         super().__init__(access_token, ad_account_id, **kwargs)
         self.path = f'/{path}/{self.default_path}'
-        print(self.path)
 
     def _get_params(self, params):
         try:
             params = self._KeywordReportSchema().load(params)
-            print(f'parameters : {params}')
             return params
         except ValidationError as err:
             raise ValueError(f"incorrect parameters: {err}")

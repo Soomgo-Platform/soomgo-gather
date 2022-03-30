@@ -20,7 +20,6 @@ class BaseKakaoKeywordAD:
 
         if self.prefix_path:
             self.domain = f'{self.domain}/{self.prefix_path}/{self.api_version}'
-            print(self.domain)
 
         self.user_refresh_token = kwargs.get('user_refresh_token', None)
         self.rest_api_key = kwargs.get('rest_api_key', None)
@@ -51,13 +50,11 @@ class BaseKakaoKeywordAD:
         update_data = {k: v for (k, v) in update_data.items() if v is not None}
         data.update(update_data)
         response = requests.post('https://kauth.kakao.com/oauth/token', data=data)
-        print(f'request for refresh access token: {response}, {type(response)}')
 
         if response.status_code == 200:
             tokens = response.json()
             self.access_token = tokens.get('access_token', self.access_token)
             if self.store_access_token:
-                print(f'Save new access token to {self.store_access_token_file}')
                 with open(self.store_access_token_file, 'w') as fp:
                     json.dump(tokens, fp)
             return response
@@ -69,6 +66,5 @@ class BaseKakaoKeywordAD:
         r = getattr(requests, method.lower())(
             self.domain + path, json=params, params=params, headers=self.make_header()
         )
-        print(f"status_code: {r.status_code}, url: {r.url}")
 
         return r
