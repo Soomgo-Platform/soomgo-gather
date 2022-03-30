@@ -33,6 +33,7 @@ _Soomgo-gather_ 는 최소한의 시간으로 최대한 빨리 데이터를 수�
     * [StatReport](https://naver.github.io/searchad-apidoc/#/tags/StatReport)
 * [Google Search Console](https://search.google.com/search-console/about)
 * [Google Ads](https://developers.google.com/google-ads/api/reference/rpc/v9/SearchGoogleAdsStreamRequest)
+* [Kakao Keyword AD](https://developers.kakao.com/docs/latest/ko/keyword-ad/common)
 
 ## Installation and usage
 
@@ -58,6 +59,31 @@ r = bizmoney.exhaust(params={
 
 if r.status_code == 200:
      print(r.json())
+```
+
+아래는 Kakao Keyword AD의 리포트를 수집하는 예시입니다.
+```python
+from soomgogather.kakao import KeywordReport
+
+k = KeywordReport(
+  path='adAccounts',
+  access_token='_',
+  ad_account_id='_'
+)
+r = k.report()
+if r.status_code == 200:
+  print(r.json())
+
+# access_token이 유요하지 않다면 갱신이 필요합니다.
+
+k = KeywordReport(
+  path='adAccounts',
+  access_token='_',
+  ad_account_id='_',
+  user_refresh_token='_',
+  rest_api_key='_',
+)
+r = k.report()
 ```
 
 

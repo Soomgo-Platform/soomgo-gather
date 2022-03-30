@@ -30,6 +30,11 @@ API Reference
 
     google
 
+.. toctree::
+    :maxdepth: 2
+
+    kakao
+
 Indices and tables
 ==================
 

@@ -23,6 +23,18 @@ Changes에는 총 5가지의 유형이 있습니다.
 - Contributors: 작업 참여자.
 
 
+Version 2.0
+-------------
+released: 2022-03-30
+
+**New**
+
+- Kakao KeywordAd - Report 배포
+
+**Contributors**
+
+- Daisy Kim
+
 Version 1.3
 -------------
 released: 2021-12-22
