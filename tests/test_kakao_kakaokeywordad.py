@@ -8,14 +8,14 @@ def test_refresh_token_success():
         path='adAccounts',
         access_token='_',
         ad_account_id='_',
-        user_refresh_token='vaild_rest_api_key',
-        rest_api_key='vaild_rest_api_key',
+        user_refresh_token='vaild_key',
+        rest_api_key='vaild_key',
     )
     with requests_mock.Mocker() as _mock:
         data = {
             'grant_type': 'refresh_token',
-            'client_id': 'vaild_rest_api_key',
-            'refresh_token': 'vaild_refresh_token',
+            'client_id': 'vaild_key',
+            'refresh_token': 'vaild_key',
         }
 
         _mock.post('https://kauth.kakao.com/oauth/token', status_code=200, json=data)
@@ -28,8 +28,8 @@ def test_refresh_token_fail():
         path='adAccounts',
         access_token='_',
         ad_account_id='_',
-        user_refresh_token='invaild_rest_api_key',
-        rest_api_key='invaild_rest_api_key',
+        user_refresh_token='invaild_key',
+        rest_api_key='invaild_key',
     )
     try:
         k._refresh_token()

@@ -78,7 +78,7 @@ class KeywordReport(BaseKakaoKeywordAD):
 
         https://developers.kakao.com/docs/latest/ko/keyword-ad/report#ad-account
         각 Paramer에 대해서는 kakao developers를 참고.
-        Paramer를 Kakao API에서는 카멜케이스로 지워하고 있으나, 파이썬에 친숙한 스네이크 케이스로 변환하여 작업한다.
+        Paramer를 Kakao API에서는 camel case로 지원하고 있으나, 파이썬에 친숙한 snake case로 변환하여 작업한다.
 
         파라미터 예시)
 

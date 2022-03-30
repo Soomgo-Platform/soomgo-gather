@@ -13,7 +13,7 @@ params = {
 
 k = KeywordReport(
     path=path,
-    access_token='vaild_access_token',
+    access_token='vaild_key',
     ad_account_id='_',
     user_refresh_token='_',
     rest_api_key='_',
@@ -30,10 +30,10 @@ def test_keywordreport_report_success_with_401():
     with patch('soomgogather.kakao.keywordreport.KeywordReport._refresh_token') as mock:
         k = KeywordReport(
             path='adAccounts',
-            access_token='invalid',
+            access_token='invaild_key',
             ad_account_id='_',
-            user_refresh_token='vaild',
-            rest_api_key='vaild',
+            user_refresh_token='vaild_key',
+            rest_api_key='vaild_key',
         )
         k.report(params={})
         mock.assert_called_once()
