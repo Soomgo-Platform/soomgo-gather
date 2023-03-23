@@ -22,6 +22,17 @@ Changes에는 총 5가지의 유형이 있습니다.
 - Doc only changes: 코드의 변경 없이 doc 만 수정.
 - Contributors: 작업 참여자.
 
+Version 2.1
+-------------
+released: 2023-03-23
+
+**Changes**
+
+- Naver SearchAd - API 도메인 변경
+
+**Contributors**
+
+- Daisy Kim
 
 Version 2.0
 -------------
