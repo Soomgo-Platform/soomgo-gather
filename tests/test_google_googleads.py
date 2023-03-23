@@ -1,7 +1,7 @@
 from google.ads.googleads.client import GoogleAdsClient
-from google.ads.googleads.v8.enums.types.summary_row_setting import SummaryRowSettingEnum
-from google.ads.googleads.v8.services.services.google_ads_service.client import GoogleAdsServiceClient
-from google.ads.googleads.v8.services.types.google_ads_service import SearchGoogleAdsStreamRequest
+from google.ads.googleads.v13.enums.types.summary_row_setting import SummaryRowSettingEnum
+from google.ads.googleads.v13.services.services.google_ads_service.client import GoogleAdsServiceClient
+from google.ads.googleads.v13.services.types.google_ads_service import SearchGoogleAdsStreamRequest
 
 from soomgogather.google import GoogleAds
 
@@ -71,7 +71,7 @@ def _create_client_from_default(mocker):
 def test_googleads_stream_file(mocker):
     mocker.patch('google.ads.googleads.client.GoogleAdsClient.get_type', return_value=SearchGoogleAdsStreamRequest)
     mocker.patch(
-        'google.ads.googleads.v8.services.services.google_ads_service.client.GoogleAdsServiceClient.search_stream',
+        'google.ads.googleads.v13.services.services.google_ads_service.client.GoogleAdsServiceClient.search_stream',
         return_value='success',
     )
     service = _create_client_from_file(mocker)
@@ -83,7 +83,7 @@ def test_googleads_stream_file(mocker):
 def test_googleads_stream_dict(mocker):
     mocker.patch('google.ads.googleads.client.GoogleAdsClient.get_type', return_value=SearchGoogleAdsStreamRequest)
     mocker.patch(
-        'google.ads.googleads.v8.services.services.google_ads_service.client.GoogleAdsServiceClient.search_stream',
+        'google.ads.googleads.v13.services.services.google_ads_service.client.GoogleAdsServiceClient.search_stream',
         return_value='success',
     )
 
@@ -117,7 +117,7 @@ def test_googleads_stream_dict(mocker):
 def test_googleads_stream_default(mocker):
     mocker.patch('google.ads.googleads.client.GoogleAdsClient.get_type', return_value=SearchGoogleAdsStreamRequest)
     mocker.patch(
-        'google.ads.googleads.v8.services.services.google_ads_service.client.GoogleAdsServiceClient.search_stream',
+        'google.ads.googleads.v13.services.services.google_ads_service.client.GoogleAdsServiceClient.search_stream',
         return_value='success',
     )
 
