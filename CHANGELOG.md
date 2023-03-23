@@ -68,7 +68,7 @@ released: 2021-12-07
 
 **Changes**
 
-- Google service name 변경
+- Google service name 변경 
 
 **Contributors**
 
