@@ -48,7 +48,6 @@ class BaseSearchAD:
         )
 
     def call(self, method, path, params={}):
-
         return getattr(requests, method.lower())(
             self.domain + path, json=params, params=params, headers=self.make_header(method, path)
         )

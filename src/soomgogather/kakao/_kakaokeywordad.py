@@ -29,7 +29,6 @@ class BaseKakaoKeywordAD:
             self.store_access_token_file = kwargs.get('store_access_token_file', 'tokens.json')
 
     def make_header(self):
-
         return self.HeaderSchema().dump(
             {'access_token': f'Bearer {self.access_token}', 'ad_account_id': self.ad_account_id}
         )
@@ -62,7 +61,6 @@ class BaseKakaoKeywordAD:
             raise ValueError(response.json())
 
     def call(self, method, path, params={}):
-
         r = getattr(requests, method.lower())(
             self.domain + path, json=params, params=params, headers=self.make_header()
         )
