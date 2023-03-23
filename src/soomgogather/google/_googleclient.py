@@ -22,7 +22,6 @@ class BaseGoogleClient:
         return credential
 
     def create_service(self):
-
         service = build(self.service_name, self.service_version, credentials=self.credential)
 
         return service

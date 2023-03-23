@@ -9,7 +9,7 @@ from marshmallow import Schema, fields
 
 
 class BaseSearchAD:
-    domain = 'https://api.naver.com'
+    domain = 'https://api.searchad.naver.com'
 
     allowed_method = ['GET', 'POST', 'DELETE', 'PUT']
 
@@ -48,7 +48,6 @@ class BaseSearchAD:
         )
 
     def call(self, method, path, params={}):
-
         return getattr(requests, method.lower())(
             self.domain + path, json=params, params=params, headers=self.make_header(method, path)
         )

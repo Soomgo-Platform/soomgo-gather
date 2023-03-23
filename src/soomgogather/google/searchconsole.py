@@ -58,7 +58,6 @@ class SearchConsole(BaseGoogleClient):
         aggregation_type = fields.Str(attribute='aggregationType')
 
     def _get_params(self, params):
-
         if "data_state" in params:
             params["data_state"] = params["data_state"].lower()
 
